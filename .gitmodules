@@ -1,0 +1,3 @@
+[submodule "DeferredIO"]
+	path = DeferredIO
+	url = git@github.com:bignerdranch/DeferredIO.git
