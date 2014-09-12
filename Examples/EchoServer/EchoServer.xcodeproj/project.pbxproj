@@ -1,0 +1,493 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		52C05AF019C36E2400E5827D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05AEF19C36E2400E5827D /* main.swift */; };
+		52C05B0319C36E2400E5827D /* EchoServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B0219C36E2400E5827D /* EchoServerTests.swift */; };
+		52C05B2619C36F8200E5827D /* DeferredTCPSocketMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05B1B19C36F6900E5827D /* DeferredTCPSocketMac.framework */; };
+		52C05B2A19C36F9E00E5827D /* DeferredIOMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05B2719C36F9E00E5827D /* DeferredIOMac.framework */; };
+		52C05B2B19C36F9E00E5827D /* DeferredMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05B2819C36F9E00E5827D /* DeferredMac.framework */; };
+		52C05B2C19C36F9E00E5827D /* ResultMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05B2919C36F9E00E5827D /* ResultMac.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52C05AFD19C36E2400E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05AE219C36E2400E5827D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52C05AE919C36E2400E5827D;
+			remoteInfo = EchoServer;
+		};
+		52C05B1619C36F6900E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05B0F19C36F6900E5827D /* DeferredTCPSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AFA119C36A2B0039E5D7;
+			remoteInfo = DeferredTCPSocket;
+		};
+		52C05B1819C36F6900E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05B0F19C36F6900E5827D /* DeferredTCPSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AFAC19C36A2B0039E5D7;
+			remoteInfo = DeferredTCPSocketTests;
+		};
+		52C05B1A19C36F6900E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05B0F19C36F6900E5827D /* DeferredTCPSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AFDC19C36ABA0039E5D7;
+			remoteInfo = DeferredTCPSocketMac;
+		};
+		52C05B1C19C36F6900E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05B0F19C36F6900E5827D /* DeferredTCPSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AFE619C36ABA0039E5D7;
+			remoteInfo = DeferredTCPSocketMacTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		52C05AEA19C36E2400E5827D /* EchoServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EchoServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		52C05AEE19C36E2400E5827D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52C05AEF19C36E2400E5827D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		52C05AFC19C36E2400E5827D /* EchoServerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EchoServerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52C05B0119C36E2400E5827D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52C05B0219C36E2400E5827D /* EchoServerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EchoServerTests.swift; sourceTree = "<group>"; };
+		52C05B0F19C36F6900E5827D /* DeferredTCPSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DeferredTCPSocket.xcodeproj; path = ../../DeferredTCPSocket/DeferredTCPSocket.xcodeproj; sourceTree = "<group>"; };
+		52C05B2719C36F9E00E5827D /* DeferredIOMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeferredIOMac.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/EchoServer-foseblhplkubolaalyngkvttuiah/Build/Products/Debug/DeferredIOMac.framework"; sourceTree = "<group>"; };
+		52C05B2819C36F9E00E5827D /* DeferredMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeferredMac.framework; path = ../../DeferredIO/Deferred/build/Debug/DeferredMac.framework; sourceTree = "<group>"; };
+		52C05B2919C36F9E00E5827D /* ResultMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResultMac.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/EchoServer-foseblhplkubolaalyngkvttuiah/Build/Products/Debug/ResultMac.framework"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		52C05AE719C36E2400E5827D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52C05B2A19C36F9E00E5827D /* DeferredIOMac.framework in Frameworks */,
+				52C05B2B19C36F9E00E5827D /* DeferredMac.framework in Frameworks */,
+				52C05B2C19C36F9E00E5827D /* ResultMac.framework in Frameworks */,
+				52C05B2619C36F8200E5827D /* DeferredTCPSocketMac.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52C05AF919C36E2400E5827D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		52C05AE119C36E2400E5827D = {
+			isa = PBXGroup;
+			children = (
+				52C05B2719C36F9E00E5827D /* DeferredIOMac.framework */,
+				52C05B2819C36F9E00E5827D /* DeferredMac.framework */,
+				52C05B2919C36F9E00E5827D /* ResultMac.framework */,
+				52C05AEC19C36E2400E5827D /* EchoServer */,
+				52C05AFF19C36E2400E5827D /* EchoServerTests */,
+				52C05AEB19C36E2400E5827D /* Products */,
+				52C05B0F19C36F6900E5827D /* DeferredTCPSocket.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		52C05AEB19C36E2400E5827D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52C05AEA19C36E2400E5827D /* EchoServer.app */,
+				52C05AFC19C36E2400E5827D /* EchoServerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52C05AEC19C36E2400E5827D /* EchoServer */ = {
+			isa = PBXGroup;
+			children = (
+				52C05AED19C36E2400E5827D /* Supporting Files */,
+			);
+			path = EchoServer;
+			sourceTree = "<group>";
+		};
+		52C05AED19C36E2400E5827D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				52C05AEE19C36E2400E5827D /* Info.plist */,
+				52C05AEF19C36E2400E5827D /* main.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		52C05AFF19C36E2400E5827D /* EchoServerTests */ = {
+			isa = PBXGroup;
+			children = (
+				52C05B0219C36E2400E5827D /* EchoServerTests.swift */,
+				52C05B0019C36E2400E5827D /* Supporting Files */,
+			);
+			path = EchoServerTests;
+			sourceTree = "<group>";
+		};
+		52C05B0019C36E2400E5827D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				52C05B0119C36E2400E5827D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		52C05B1019C36F6900E5827D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52C05B1719C36F6900E5827D /* DeferredTCPSocket.framework */,
+				52C05B1919C36F6900E5827D /* DeferredTCPSocketTests.xctest */,
+				52C05B1B19C36F6900E5827D /* DeferredTCPSocketMac.framework */,
+				52C05B1D19C36F6900E5827D /* DeferredTCPSocketMacTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		52C05AE919C36E2400E5827D /* EchoServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52C05B0619C36E2400E5827D /* Build configuration list for PBXNativeTarget "EchoServer" */;
+			buildPhases = (
+				52C05AE619C36E2400E5827D /* Sources */,
+				52C05AE719C36E2400E5827D /* Frameworks */,
+				52C05AE819C36E2400E5827D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EchoServer;
+			productName = EchoServer;
+			productReference = 52C05AEA19C36E2400E5827D /* EchoServer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		52C05AFB19C36E2400E5827D /* EchoServerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52C05B0919C36E2400E5827D /* Build configuration list for PBXNativeTarget "EchoServerTests" */;
+			buildPhases = (
+				52C05AF819C36E2400E5827D /* Sources */,
+				52C05AF919C36E2400E5827D /* Frameworks */,
+				52C05AFA19C36E2400E5827D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52C05AFE19C36E2400E5827D /* PBXTargetDependency */,
+			);
+			name = EchoServerTests;
+			productName = EchoServerTests;
+			productReference = 52C05AFC19C36E2400E5827D /* EchoServerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		52C05AE219C36E2400E5827D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Big Nerd Ranch";
+				TargetAttributes = {
+					52C05AE919C36E2400E5827D = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					52C05AFB19C36E2400E5827D = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 52C05AE919C36E2400E5827D;
+					};
+				};
+			};
+			buildConfigurationList = 52C05AE519C36E2400E5827D /* Build configuration list for PBXProject "EchoServer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 52C05AE119C36E2400E5827D;
+			productRefGroup = 52C05AEB19C36E2400E5827D /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 52C05B1019C36F6900E5827D /* Products */;
+					ProjectRef = 52C05B0F19C36F6900E5827D /* DeferredTCPSocket.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				52C05AE919C36E2400E5827D /* EchoServer */,
+				52C05AFB19C36E2400E5827D /* EchoServerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		52C05B1719C36F6900E5827D /* DeferredTCPSocket.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DeferredTCPSocket.framework;
+			remoteRef = 52C05B1619C36F6900E5827D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		52C05B1919C36F6900E5827D /* DeferredTCPSocketTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DeferredTCPSocketTests.xctest;
+			remoteRef = 52C05B1819C36F6900E5827D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		52C05B1B19C36F6900E5827D /* DeferredTCPSocketMac.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DeferredTCPSocketMac.framework;
+			remoteRef = 52C05B1A19C36F6900E5827D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		52C05B1D19C36F6900E5827D /* DeferredTCPSocketMacTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DeferredTCPSocketMacTests.xctest;
+			remoteRef = 52C05B1C19C36F6900E5827D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		52C05AE819C36E2400E5827D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52C05AFA19C36E2400E5827D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52C05AE619C36E2400E5827D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52C05AF019C36E2400E5827D /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52C05AF819C36E2400E5827D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52C05B0319C36E2400E5827D /* EchoServerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52C05AFE19C36E2400E5827D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52C05AE919C36E2400E5827D /* EchoServer */;
+			targetProxy = 52C05AFD19C36E2400E5827D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		52C05B0419C36E2400E5827D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		52C05B0519C36E2400E5827D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		52C05B0719C36E2400E5827D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/EchoServer-foseblhplkubolaalyngkvttuiah/Build/Products/Debug",
+					/Users/john/Documents/bignerdranch/DeferredTCPSocket/DeferredIO/Deferred/build/Debug,
+				);
+				INFOPLIST_FILE = EchoServer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		52C05B0819C36E2400E5827D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/EchoServer-foseblhplkubolaalyngkvttuiah/Build/Products/Debug",
+					/Users/john/Documents/bignerdranch/DeferredTCPSocket/DeferredIO/Deferred/build/Debug,
+				);
+				INFOPLIST_FILE = EchoServer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		52C05B0A19C36E2400E5827D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EchoServerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EchoServer.app/Contents/MacOS/EchoServer";
+			};
+			name = Debug;
+		};
+		52C05B0B19C36E2400E5827D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EchoServerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EchoServer.app/Contents/MacOS/EchoServer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		52C05AE519C36E2400E5827D /* Build configuration list for PBXProject "EchoServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52C05B0419C36E2400E5827D /* Debug */,
+				52C05B0519C36E2400E5827D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52C05B0619C36E2400E5827D /* Build configuration list for PBXNativeTarget "EchoServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52C05B0719C36E2400E5827D /* Debug */,
+				52C05B0819C36E2400E5827D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52C05B0919C36E2400E5827D /* Build configuration list for PBXNativeTarget "EchoServerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52C05B0A19C36E2400E5827D /* Debug */,
+				52C05B0B19C36E2400E5827D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 52C05AE219C36E2400E5827D /* Project object */;
+}
