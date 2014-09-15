@@ -103,7 +103,7 @@ public class TCPAcceptSocket {
     }
 
     deinit {
-        NSLog("DEINIT \(self)")
+//        NSLog("DEINIT \(self)")
         close()
     }
 

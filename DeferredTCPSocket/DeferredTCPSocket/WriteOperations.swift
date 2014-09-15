@@ -44,7 +44,7 @@ class DeferredWriteOperation: DeferredIOOperation {
     }
 
     deinit {
-        NSLog("DEINIT \(self)")
+//        NSLog("DEINIT \(self)")
     }
 
     func complete(result: WriteResult) {

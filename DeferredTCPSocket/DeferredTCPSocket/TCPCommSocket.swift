@@ -39,7 +39,7 @@ public class TCPCommSocket {
     }
 
     deinit {
-        NSLog("DEINIT \(self)")
+//        NSLog("DEINIT \(self)")
         close()
     }
 

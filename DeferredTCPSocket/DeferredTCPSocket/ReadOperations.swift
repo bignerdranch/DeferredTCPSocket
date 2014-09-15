@@ -131,7 +131,7 @@ class DeferredReadOperation: DeferredIOOperation {
     }
 
     deinit {
-        NSLog("DEINIT \(self)")
+//        NSLog("DEINIT \(self)")
 //        queueSpecificKey.dealloc(0)
     }
 

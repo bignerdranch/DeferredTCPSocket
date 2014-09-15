@@ -30,7 +30,7 @@ public class DeferredReader: ReadOperationDelegate {
     }
 
     deinit {
-        NSLog("DEINIT: \(self)")
+//        NSLog("DEINIT: \(self)")
         close()
     }
 

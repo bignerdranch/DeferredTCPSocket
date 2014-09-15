@@ -30,7 +30,7 @@ public class DeferredWriter {
     }
 
     deinit {
-        NSLog("DEINIT: \(self)")
+//        NSLog("DEINIT: \(self)")
         close()
     }
 
