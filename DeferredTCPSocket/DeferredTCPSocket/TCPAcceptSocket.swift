@@ -21,22 +21,22 @@ private func socklen_of<T>(x: T) -> socklen_t {
     return socklen_t(sizeof(x.dynamicType))
 }
 
+public struct LibCError: ErrorType {
+    let functionName: String
+    let errno: Int32
+
+    public var description: String {
+        return "TCPAcceptSocket.Error: \(functionName) failed with errno \(errno)"
+    }
+}
+
 public class TCPAcceptSocket {
     public typealias ConnectionHandler = (queue: dispatch_queue_t, callback: (TCPCommSocket) -> ())
-
-    public struct Error: ErrorType {
-        let functionName: String
-        let errno: Int32
-
-        public var description: String {
-            return "TCPAcceptSocket.Error: \(functionName) failed with errno \(errno)"
-        }
-    }
 
     public class func accept(onPort port: UInt16, withConnectionHandler: ConnectionHandler) -> Result<TCPAcceptSocket> {
         let fd = socket(AF_INET, SOCK_STREAM, 0)
         if fd < 0 {
-            return .Failure(Error(functionName: "socket", errno: errno))
+            return .Failure(LibCError(functionName: "socket", errno: errno))
         }
 
         var addr: UnsafeMutablePointer<addrinfo> = nil
@@ -47,7 +47,7 @@ public class TCPAcceptSocket {
             if addr != nil {
                 freeaddrinfo(addr)
             }
-            return .Failure(Error(functionName: functionName, errno: e))
+            return .Failure(LibCError(functionName: functionName, errno: e))
         }
 
         var reuseAddr = 1
