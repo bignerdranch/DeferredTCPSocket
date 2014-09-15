@@ -15,7 +15,7 @@ import DeferredMac
 import ResultMac
 #endif
 
-public enum ReadError: ErrorType {
+public enum ReadError: ErrorType, Equatable {
     case Eof
     case Cancelled
     case Timeout
@@ -30,6 +30,20 @@ public enum ReadError: ErrorType {
         case DelimiterNotFound: return "ReadError.DelimiterNotFound"
         case ReadFailedWithErrno(let errno): return "ReadError.ReadFailedWithErrno(\(errno))"
         }
+    }
+}
+
+public func ==(lhs: ReadError, rhs: ReadError) -> Bool {
+    switch (lhs, rhs) {
+    case (.Eof, .Eof):             return true
+    case (.Cancelled, .Cancelled): return true
+    case (.Timeout, .Timeout):     return true
+    case (.DelimiterNotFound, .DelimiterNotFound): return true
+
+    case let (.ReadFailedWithErrno(e1), .ReadFailedWithErrno(e2)): return e1 == e2
+
+    default:
+        return false
     }
 }
 
