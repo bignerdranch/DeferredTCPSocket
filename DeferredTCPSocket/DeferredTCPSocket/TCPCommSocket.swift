@@ -40,7 +40,7 @@ public class TCPCommSocket {
 
             var hints = addrinfo(
                 ai_flags: 0,
-                ai_family: PF_UNSPEC,
+                ai_family: AF_INET,
                 ai_socktype: SOCK_STREAM,
                 ai_protocol: IPPROTO_TCP,
                 ai_addrlen: 0,
