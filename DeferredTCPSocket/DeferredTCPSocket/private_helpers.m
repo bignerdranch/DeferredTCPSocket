@@ -11,3 +11,7 @@
 int fcntl_set_O_NONBLOCK(int fd) {
     return fcntl(fd, F_SETFL, O_NONBLOCK);
 }
+
+dispatch_data_t get_dispatch_data_empty() {
+    return dispatch_data_empty;
+}

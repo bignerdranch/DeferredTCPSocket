@@ -10,10 +10,8 @@ import Foundation
 import Darwin
 #if os(iOS)
 import Deferred
-import DeferredIO
 #else
 import DeferredMac
-import DeferredIOMac
 #endif
 
 public class TCPCommSocket {

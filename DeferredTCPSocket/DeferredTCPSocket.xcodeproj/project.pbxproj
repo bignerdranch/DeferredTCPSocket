@@ -10,11 +10,9 @@
 		52B9AFA719C36A2B0039E5D7 /* DeferredTCPSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 52B9AFA619C36A2B0039E5D7 /* DeferredTCPSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52B9AFAD19C36A2B0039E5D7 /* DeferredTCPSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B9AFA119C36A2B0039E5D7 /* DeferredTCPSocket.framework */; };
 		52B9AFB419C36A2B0039E5D7 /* DeferredTCPSocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9AFB319C36A2B0039E5D7 /* DeferredTCPSocketTests.swift */; };
-		52B9AFD619C36AB00039E5D7 /* DeferredIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B9AFC719C36AA30039E5D7 /* DeferredIO.framework */; };
 		52B9AFE119C36ABA0039E5D7 /* DeferredTCPSocketMac.h in Headers */ = {isa = PBXBuildFile; fileRef = 52B9AFE019C36ABA0039E5D7 /* DeferredTCPSocketMac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52B9AFE719C36ABA0039E5D7 /* DeferredTCPSocketMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B9AFDC19C36ABA0039E5D7 /* DeferredTCPSocketMac.framework */; };
 		52B9AFEE19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9AFED19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift */; };
-		52B9AFF519C36AC00039E5D7 /* DeferredIOMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B9AFCB19C36AA30039E5D7 /* DeferredIOMac.framework */; };
 		52B9AFF719C36ADE0039E5D7 /* TCPCommSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9AFF619C36ADE0039E5D7 /* TCPCommSocket.swift */; };
 		52B9AFF819C36AE90039E5D7 /* TCPCommSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9AFF619C36ADE0039E5D7 /* TCPCommSocket.swift */; };
 		52C05A9919C36BA400E5827D /* private_helpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 52C05A9719C36BA400E5827D /* private_helpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,6 +21,16 @@
 		52C05AA219C36BD300E5827D /* private_helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C05A9819C36BA400E5827D /* private_helpers.m */; };
 		52C05AA419C36C7300E5827D /* TCPAcceptSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05AA319C36C7300E5827D /* TCPAcceptSocket.swift */; };
 		52C05AA519C36C9100E5827D /* TCPAcceptSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05AA319C36C7300E5827D /* TCPAcceptSocket.swift */; };
+		52C05B9A19C728DF00E5827D /* DeferredIOOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9519C728DF00E5827D /* DeferredIOOperation.swift */; };
+		52C05B9B19C728DF00E5827D /* DeferredIOOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9519C728DF00E5827D /* DeferredIOOperation.swift */; };
+		52C05B9C19C728DF00E5827D /* DeferredReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9619C728DF00E5827D /* DeferredReader.swift */; };
+		52C05B9D19C728DF00E5827D /* DeferredReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9619C728DF00E5827D /* DeferredReader.swift */; };
+		52C05B9E19C728DF00E5827D /* DeferredWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9719C728DF00E5827D /* DeferredWriter.swift */; };
+		52C05B9F19C728DF00E5827D /* DeferredWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9719C728DF00E5827D /* DeferredWriter.swift */; };
+		52C05BA019C728DF00E5827D /* ReadOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9819C728DF00E5827D /* ReadOperations.swift */; };
+		52C05BA119C728DF00E5827D /* ReadOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9819C728DF00E5827D /* ReadOperations.swift */; };
+		52C05BA219C728DF00E5827D /* WriteOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9919C728DF00E5827D /* WriteOperations.swift */; };
+		52C05BA319C728DF00E5827D /* WriteOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9919C728DF00E5827D /* WriteOperations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,40 +41,68 @@
 			remoteGlobalIDString = 52B9AFA019C36A2B0039E5D7;
 			remoteInfo = DeferredTCPSocket;
 		};
-		52B9AFC619C36AA30039E5D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52B9AFBD19C36AA30039E5D7 /* DeferredIO.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 52B9AEC519C35D760039E5D7;
-			remoteInfo = DeferredIO;
-		};
-		52B9AFC819C36AA30039E5D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52B9AFBD19C36AA30039E5D7 /* DeferredIO.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 52B9AED019C35D760039E5D7;
-			remoteInfo = DeferredIOTests;
-		};
-		52B9AFCA19C36AA30039E5D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52B9AFBD19C36AA30039E5D7 /* DeferredIO.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 52B9AF5B19C35F830039E5D7;
-			remoteInfo = DeferredIOMac;
-		};
-		52B9AFCC19C36AA30039E5D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52B9AFBD19C36AA30039E5D7 /* DeferredIO.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 52B9AF6519C35F830039E5D7;
-			remoteInfo = DeferredIOMacTests;
-		};
 		52B9AFE819C36ABA0039E5D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 52B9AF9819C36A2B0039E5D7 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 52B9AFDB19C36ABA0039E5D7;
 			remoteInfo = DeferredTCPSocketMac;
+		};
+		52C05BAC19C72B7100E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BA519C72B7100E5827D /* Deferred.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 523E00A1199915C600E07C3C;
+			remoteInfo = Deferred;
+		};
+		52C05BAE19C72B7100E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BA519C72B7100E5827D /* Deferred.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 523E00AC199915C600E07C3C;
+			remoteInfo = DeferredTests;
+		};
+		52C05BB019C72B7100E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BA519C72B7100E5827D /* Deferred.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AF1919C35F110039E5D7;
+			remoteInfo = DeferredMac;
+		};
+		52C05BB219C72B7100E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BA519C72B7100E5827D /* Deferred.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AF2319C35F110039E5D7;
+			remoteInfo = DeferredMacTests;
+		};
+		52C05BBB19C72B7400E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BB419C72B7400E5827D /* Result.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AE9B19C35B1D0039E5D7;
+			remoteInfo = Result;
+		};
+		52C05BBD19C72B7400E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BB419C72B7400E5827D /* Result.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AEA619C35B1D0039E5D7;
+			remoteInfo = ResultTests;
+		};
+		52C05BBF19C72B7400E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BB419C72B7400E5827D /* Result.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AF3B19C35F5F0039E5D7;
+			remoteInfo = ResultMac;
+		};
+		52C05BC119C72B7400E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BB419C72B7400E5827D /* Result.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AF4519C35F5F0039E5D7;
+			remoteInfo = ResultMacTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -77,7 +113,6 @@
 		52B9AFAC19C36A2B0039E5D7 /* DeferredTCPSocketTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeferredTCPSocketTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B9AFB219C36A2B0039E5D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52B9AFB319C36A2B0039E5D7 /* DeferredTCPSocketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeferredTCPSocketTests.swift; sourceTree = "<group>"; };
-		52B9AFBD19C36AA30039E5D7 /* DeferredIO.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DeferredIO.xcodeproj; path = ../DeferredIO/DeferredIO/DeferredIO.xcodeproj; sourceTree = "<group>"; };
 		52B9AFDC19C36ABA0039E5D7 /* DeferredTCPSocketMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DeferredTCPSocketMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B9AFDF19C36ABA0039E5D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52B9AFE019C36ABA0039E5D7 /* DeferredTCPSocketMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeferredTCPSocketMac.h; sourceTree = "<group>"; };
@@ -88,6 +123,13 @@
 		52C05A9719C36BA400E5827D /* private_helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = private_helpers.h; sourceTree = "<group>"; };
 		52C05A9819C36BA400E5827D /* private_helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = private_helpers.m; sourceTree = "<group>"; };
 		52C05AA319C36C7300E5827D /* TCPAcceptSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPAcceptSocket.swift; sourceTree = "<group>"; };
+		52C05B9519C728DF00E5827D /* DeferredIOOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeferredIOOperation.swift; sourceTree = "<group>"; };
+		52C05B9619C728DF00E5827D /* DeferredReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeferredReader.swift; sourceTree = "<group>"; };
+		52C05B9719C728DF00E5827D /* DeferredWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeferredWriter.swift; sourceTree = "<group>"; };
+		52C05B9819C728DF00E5827D /* ReadOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOperations.swift; sourceTree = "<group>"; };
+		52C05B9919C728DF00E5827D /* WriteOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteOperations.swift; sourceTree = "<group>"; };
+		52C05BA519C72B7100E5827D /* Deferred.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Deferred.xcodeproj; path = ../Deferred/Deferred.xcodeproj; sourceTree = "<group>"; };
+		52C05BB419C72B7400E5827D /* Result.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Result.xcodeproj; path = ../Result/Result.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +137,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52B9AFD619C36AB00039E5D7 /* DeferredIO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +152,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52B9AFF519C36AC00039E5D7 /* DeferredIOMac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +174,8 @@
 				52B9AFDD19C36ABA0039E5D7 /* DeferredTCPSocketMac */,
 				52B9AFEA19C36ABA0039E5D7 /* DeferredTCPSocketMacTests */,
 				52B9AFA219C36A2B0039E5D7 /* Products */,
-				52B9AFBD19C36AA30039E5D7 /* DeferredIO.xcodeproj */,
+				52C05BA519C72B7100E5827D /* Deferred.xcodeproj */,
+				52C05BB419C72B7400E5827D /* Result.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,6 +193,7 @@
 		52B9AFA319C36A2B0039E5D7 /* DeferredTCPSocket */ = {
 			isa = PBXGroup;
 			children = (
+				52C05B9019C7281A00E5827D /* DeferredIO */,
 				52B9AFF619C36ADE0039E5D7 /* TCPCommSocket.swift */,
 				52C05AA319C36C7300E5827D /* TCPAcceptSocket.swift */,
 				52B9AFA619C36A2B0039E5D7 /* DeferredTCPSocket.h */,
@@ -187,17 +229,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		52B9AFBE19C36AA30039E5D7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				52B9AFC719C36AA30039E5D7 /* DeferredIO.framework */,
-				52B9AFC919C36AA30039E5D7 /* DeferredIOTests.xctest */,
-				52B9AFCB19C36AA30039E5D7 /* DeferredIOMac.framework */,
-				52B9AFCD19C36AA30039E5D7 /* DeferredIOMacTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		52B9AFDD19C36ABA0039E5D7 /* DeferredTCPSocketMac */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +261,40 @@
 				52B9AFEC19C36ABA0039E5D7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		52C05B9019C7281A00E5827D /* DeferredIO */ = {
+			isa = PBXGroup;
+			children = (
+				52C05B9519C728DF00E5827D /* DeferredIOOperation.swift */,
+				52C05B9619C728DF00E5827D /* DeferredReader.swift */,
+				52C05B9719C728DF00E5827D /* DeferredWriter.swift */,
+				52C05B9819C728DF00E5827D /* ReadOperations.swift */,
+				52C05B9919C728DF00E5827D /* WriteOperations.swift */,
+			);
+			name = DeferredIO;
+			sourceTree = "<group>";
+		};
+		52C05BA619C72B7100E5827D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52C05BAD19C72B7100E5827D /* Deferred.framework */,
+				52C05BAF19C72B7100E5827D /* DeferredTests.xctest */,
+				52C05BB119C72B7100E5827D /* DeferredMac.framework */,
+				52C05BB319C72B7100E5827D /* DeferredMacTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52C05BB519C72B7400E5827D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52C05BBC19C72B7400E5827D /* Result.framework */,
+				52C05BBE19C72B7400E5827D /* ResultTests.xctest */,
+				52C05BC019C72B7400E5827D /* ResultMac.framework */,
+				52C05BC219C72B7400E5827D /* ResultMacTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,8 +428,12 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 52B9AFBE19C36AA30039E5D7 /* Products */;
-					ProjectRef = 52B9AFBD19C36AA30039E5D7 /* DeferredIO.xcodeproj */;
+					ProductGroup = 52C05BA619C72B7100E5827D /* Products */;
+					ProjectRef = 52C05BA519C72B7100E5827D /* Deferred.xcodeproj */;
+				},
+				{
+					ProductGroup = 52C05BB519C72B7400E5827D /* Products */;
+					ProjectRef = 52C05BB419C72B7400E5827D /* Result.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -378,32 +447,60 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		52B9AFC719C36AA30039E5D7 /* DeferredIO.framework */ = {
+		52C05BAD19C72B7100E5827D /* Deferred.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = DeferredIO.framework;
-			remoteRef = 52B9AFC619C36AA30039E5D7 /* PBXContainerItemProxy */;
+			path = Deferred.framework;
+			remoteRef = 52C05BAC19C72B7100E5827D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		52B9AFC919C36AA30039E5D7 /* DeferredIOTests.xctest */ = {
+		52C05BAF19C72B7100E5827D /* DeferredTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = DeferredIOTests.xctest;
-			remoteRef = 52B9AFC819C36AA30039E5D7 /* PBXContainerItemProxy */;
+			path = DeferredTests.xctest;
+			remoteRef = 52C05BAE19C72B7100E5827D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		52B9AFCB19C36AA30039E5D7 /* DeferredIOMac.framework */ = {
+		52C05BB119C72B7100E5827D /* DeferredMac.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = DeferredIOMac.framework;
-			remoteRef = 52B9AFCA19C36AA30039E5D7 /* PBXContainerItemProxy */;
+			path = DeferredMac.framework;
+			remoteRef = 52C05BB019C72B7100E5827D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		52B9AFCD19C36AA30039E5D7 /* DeferredIOMacTests.xctest */ = {
+		52C05BB319C72B7100E5827D /* DeferredMacTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = DeferredIOMacTests.xctest;
-			remoteRef = 52B9AFCC19C36AA30039E5D7 /* PBXContainerItemProxy */;
+			path = DeferredMacTests.xctest;
+			remoteRef = 52C05BB219C72B7100E5827D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		52C05BBC19C72B7400E5827D /* Result.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Result.framework;
+			remoteRef = 52C05BBB19C72B7400E5827D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		52C05BBE19C72B7400E5827D /* ResultTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ResultTests.xctest;
+			remoteRef = 52C05BBD19C72B7400E5827D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		52C05BC019C72B7400E5827D /* ResultMac.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ResultMac.framework;
+			remoteRef = 52C05BBF19C72B7400E5827D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		52C05BC219C72B7400E5827D /* ResultMacTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ResultMacTests.xctest;
+			remoteRef = 52C05BC119C72B7400E5827D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -445,8 +542,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				52C05AA419C36C7300E5827D /* TCPAcceptSocket.swift in Sources */,
+				52C05B9E19C728DF00E5827D /* DeferredWriter.swift in Sources */,
+				52C05BA019C728DF00E5827D /* ReadOperations.swift in Sources */,
+				52C05B9C19C728DF00E5827D /* DeferredReader.swift in Sources */,
 				52B9AFF719C36ADE0039E5D7 /* TCPCommSocket.swift in Sources */,
+				52C05B9A19C728DF00E5827D /* DeferredIOOperation.swift in Sources */,
 				52C05A9A19C36BA400E5827D /* private_helpers.m in Sources */,
+				52C05BA219C728DF00E5827D /* WriteOperations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,8 +565,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				52C05AA519C36C9100E5827D /* TCPAcceptSocket.swift in Sources */,
+				52C05B9F19C728DF00E5827D /* DeferredWriter.swift in Sources */,
+				52C05BA119C728DF00E5827D /* ReadOperations.swift in Sources */,
+				52C05B9D19C728DF00E5827D /* DeferredReader.swift in Sources */,
 				52B9AFF819C36AE90039E5D7 /* TCPCommSocket.swift in Sources */,
+				52C05B9B19C728DF00E5827D /* DeferredIOOperation.swift in Sources */,
 				52C05AA219C36BD300E5827D /* private_helpers.m in Sources */,
+				52C05BA319C728DF00E5827D /* WriteOperations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

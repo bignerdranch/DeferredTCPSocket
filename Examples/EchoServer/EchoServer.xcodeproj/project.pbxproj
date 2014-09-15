@@ -10,7 +10,6 @@
 		52C05AF019C36E2400E5827D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05AEF19C36E2400E5827D /* main.swift */; };
 		52C05B0319C36E2400E5827D /* EchoServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B0219C36E2400E5827D /* EchoServerTests.swift */; };
 		52C05B2619C36F8200E5827D /* DeferredTCPSocketMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05B1B19C36F6900E5827D /* DeferredTCPSocketMac.framework */; };
-		52C05B2A19C36F9E00E5827D /* DeferredIOMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05B2719C36F9E00E5827D /* DeferredIOMac.framework */; };
 		52C05B2B19C36F9E00E5827D /* DeferredMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05B2819C36F9E00E5827D /* DeferredMac.framework */; };
 		52C05B2C19C36F9E00E5827D /* ResultMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05B2919C36F9E00E5827D /* ResultMac.framework */; };
 /* End PBXBuildFile section */
@@ -61,7 +60,6 @@
 		52C05B0119C36E2400E5827D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52C05B0219C36E2400E5827D /* EchoServerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EchoServerTests.swift; sourceTree = "<group>"; };
 		52C05B0F19C36F6900E5827D /* DeferredTCPSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DeferredTCPSocket.xcodeproj; path = ../../DeferredTCPSocket/DeferredTCPSocket.xcodeproj; sourceTree = "<group>"; };
-		52C05B2719C36F9E00E5827D /* DeferredIOMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeferredIOMac.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/EchoServer-foseblhplkubolaalyngkvttuiah/Build/Products/Debug/DeferredIOMac.framework"; sourceTree = "<group>"; };
 		52C05B2819C36F9E00E5827D /* DeferredMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeferredMac.framework; path = ../../DeferredIO/Deferred/build/Debug/DeferredMac.framework; sourceTree = "<group>"; };
 		52C05B2919C36F9E00E5827D /* ResultMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResultMac.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/EchoServer-foseblhplkubolaalyngkvttuiah/Build/Products/Debug/ResultMac.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,7 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52C05B2A19C36F9E00E5827D /* DeferredIOMac.framework in Frameworks */,
 				52C05B2B19C36F9E00E5827D /* DeferredMac.framework in Frameworks */,
 				52C05B2C19C36F9E00E5827D /* ResultMac.framework in Frameworks */,
 				52C05B2619C36F8200E5827D /* DeferredTCPSocketMac.framework in Frameworks */,
@@ -91,7 +88,6 @@
 		52C05AE119C36E2400E5827D = {
 			isa = PBXGroup;
 			children = (
-				52C05B2719C36F9E00E5827D /* DeferredIOMac.framework */,
 				52C05B2819C36F9E00E5827D /* DeferredMac.framework */,
 				52C05B2919C36F9E00E5827D /* ResultMac.framework */,
 				52C05AEC19C36E2400E5827D /* EchoServer */,

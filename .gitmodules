@@ -1,3 +1,6 @@
-[submodule "DeferredIO"]
-	path = DeferredIO
-	url = git@github.com:bignerdranch/DeferredIO.git
+[submodule "Deferred"]
+	path = Deferred
+	url = git@github.com:bignerdranch/Deferred.git
+[submodule "Result"]
+	path = Result
+	url = git@github.com:bignerdranch/Result.git

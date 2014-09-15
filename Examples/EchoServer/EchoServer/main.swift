@@ -8,7 +8,6 @@
 
 import Cocoa
 import DeferredTCPSocketMac
-import DeferredIOMac
 
 extension ReadError {
     var isTimeout: Bool {

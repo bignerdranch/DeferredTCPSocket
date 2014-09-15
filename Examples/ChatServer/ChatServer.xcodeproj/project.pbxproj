@@ -1,0 +1,503 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		52C05B5019C38E3100E5827D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B4F19C38E3100E5827D /* main.swift */; };
+		52C05B6319C38E3100E5827D /* ChatServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B6219C38E3100E5827D /* ChatServerTests.swift */; };
+		52C05B8419C38E6200E5827D /* CommandParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B8319C38E6200E5827D /* CommandParser.swift */; };
+		52C05B8D19C3905900E5827D /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B8C19C3905900E5827D /* Support.swift */; };
+		52C05B8F19C3909C00E5827D /* ChatServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B8E19C3909C00E5827D /* ChatServer.swift */; };
+		52C05BDA19C72F1C00E5827D /* DeferredTCPSocketMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BD019C72F0300E5827D /* DeferredTCPSocketMac.framework */; };
+		52C05BDD19C72F1D00E5827D /* DeferredMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BDB19C72F1D00E5827D /* DeferredMac.framework */; };
+		52C05BDE19C72F1D00E5827D /* ResultMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BDC19C72F1D00E5827D /* ResultMac.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52C05B5D19C38E3100E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05B4219C38E3100E5827D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52C05B4919C38E3100E5827D;
+			remoteInfo = ChatServer;
+		};
+		52C05BCB19C72F0300E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BC419C72F0300E5827D /* DeferredTCPSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AFA119C36A2B0039E5D7;
+			remoteInfo = DeferredTCPSocket;
+		};
+		52C05BCD19C72F0300E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BC419C72F0300E5827D /* DeferredTCPSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AFAC19C36A2B0039E5D7;
+			remoteInfo = DeferredTCPSocketTests;
+		};
+		52C05BCF19C72F0300E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BC419C72F0300E5827D /* DeferredTCPSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AFDC19C36ABA0039E5D7;
+			remoteInfo = DeferredTCPSocketMac;
+		};
+		52C05BD119C72F0300E5827D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BC419C72F0300E5827D /* DeferredTCPSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 52B9AFE619C36ABA0039E5D7;
+			remoteInfo = DeferredTCPSocketMacTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		52C05B4A19C38E3100E5827D /* ChatServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		52C05B4E19C38E3100E5827D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52C05B4F19C38E3100E5827D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		52C05B5C19C38E3100E5827D /* ChatServerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatServerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52C05B6119C38E3100E5827D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52C05B6219C38E3100E5827D /* ChatServerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatServerTests.swift; sourceTree = "<group>"; };
+		52C05B8319C38E6200E5827D /* CommandParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandParser.swift; sourceTree = "<group>"; };
+		52C05B8C19C3905900E5827D /* Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
+		52C05B8E19C3909C00E5827D /* ChatServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatServer.swift; sourceTree = "<group>"; };
+		52C05BC419C72F0300E5827D /* DeferredTCPSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DeferredTCPSocket.xcodeproj; path = ../../DeferredTCPSocket/DeferredTCPSocket.xcodeproj; sourceTree = "<group>"; };
+		52C05BDB19C72F1D00E5827D /* DeferredMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeferredMac.framework; path = ../../Deferred/build/Debug/DeferredMac.framework; sourceTree = "<group>"; };
+		52C05BDC19C72F1D00E5827D /* ResultMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResultMac.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/ChatServer-fkxustqqtlwoacakzvsfaplnwxqp/Build/Products/Debug/ResultMac.framework"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		52C05B4719C38E3100E5827D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52C05BDD19C72F1D00E5827D /* DeferredMac.framework in Frameworks */,
+				52C05BDE19C72F1D00E5827D /* ResultMac.framework in Frameworks */,
+				52C05BDA19C72F1C00E5827D /* DeferredTCPSocketMac.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52C05B5919C38E3100E5827D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		52C05B4119C38E3100E5827D = {
+			isa = PBXGroup;
+			children = (
+				52C05BDB19C72F1D00E5827D /* DeferredMac.framework */,
+				52C05BDC19C72F1D00E5827D /* ResultMac.framework */,
+				52C05B4C19C38E3100E5827D /* ChatServer */,
+				52C05B5F19C38E3100E5827D /* ChatServerTests */,
+				52C05B4B19C38E3100E5827D /* Products */,
+				52C05BC419C72F0300E5827D /* DeferredTCPSocket.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		52C05B4B19C38E3100E5827D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52C05B4A19C38E3100E5827D /* ChatServer.app */,
+				52C05B5C19C38E3100E5827D /* ChatServerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52C05B4C19C38E3100E5827D /* ChatServer */ = {
+			isa = PBXGroup;
+			children = (
+				52C05B8C19C3905900E5827D /* Support.swift */,
+				52C05B8319C38E6200E5827D /* CommandParser.swift */,
+				52C05B8E19C3909C00E5827D /* ChatServer.swift */,
+				52C05B4F19C38E3100E5827D /* main.swift */,
+				52C05B4D19C38E3100E5827D /* Supporting Files */,
+			);
+			path = ChatServer;
+			sourceTree = "<group>";
+		};
+		52C05B4D19C38E3100E5827D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				52C05B4E19C38E3100E5827D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		52C05B5F19C38E3100E5827D /* ChatServerTests */ = {
+			isa = PBXGroup;
+			children = (
+				52C05B6219C38E3100E5827D /* ChatServerTests.swift */,
+				52C05B6019C38E3100E5827D /* Supporting Files */,
+			);
+			path = ChatServerTests;
+			sourceTree = "<group>";
+		};
+		52C05B6019C38E3100E5827D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				52C05B6119C38E3100E5827D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		52C05BC519C72F0300E5827D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52C05BCC19C72F0300E5827D /* DeferredTCPSocket.framework */,
+				52C05BCE19C72F0300E5827D /* DeferredTCPSocketTests.xctest */,
+				52C05BD019C72F0300E5827D /* DeferredTCPSocketMac.framework */,
+				52C05BD219C72F0300E5827D /* DeferredTCPSocketMacTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		52C05B4919C38E3100E5827D /* ChatServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52C05B6619C38E3100E5827D /* Build configuration list for PBXNativeTarget "ChatServer" */;
+			buildPhases = (
+				52C05B4619C38E3100E5827D /* Sources */,
+				52C05B4719C38E3100E5827D /* Frameworks */,
+				52C05B4819C38E3100E5827D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChatServer;
+			productName = ChatServer;
+			productReference = 52C05B4A19C38E3100E5827D /* ChatServer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		52C05B5B19C38E3100E5827D /* ChatServerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52C05B6919C38E3100E5827D /* Build configuration list for PBXNativeTarget "ChatServerTests" */;
+			buildPhases = (
+				52C05B5819C38E3100E5827D /* Sources */,
+				52C05B5919C38E3100E5827D /* Frameworks */,
+				52C05B5A19C38E3100E5827D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52C05B5E19C38E3100E5827D /* PBXTargetDependency */,
+			);
+			name = ChatServerTests;
+			productName = ChatServerTests;
+			productReference = 52C05B5C19C38E3100E5827D /* ChatServerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		52C05B4219C38E3100E5827D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Big Nerd Ranch";
+				TargetAttributes = {
+					52C05B4919C38E3100E5827D = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					52C05B5B19C38E3100E5827D = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 52C05B4919C38E3100E5827D;
+					};
+				};
+			};
+			buildConfigurationList = 52C05B4519C38E3100E5827D /* Build configuration list for PBXProject "ChatServer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 52C05B4119C38E3100E5827D;
+			productRefGroup = 52C05B4B19C38E3100E5827D /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 52C05BC519C72F0300E5827D /* Products */;
+					ProjectRef = 52C05BC419C72F0300E5827D /* DeferredTCPSocket.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				52C05B4919C38E3100E5827D /* ChatServer */,
+				52C05B5B19C38E3100E5827D /* ChatServerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		52C05BCC19C72F0300E5827D /* DeferredTCPSocket.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DeferredTCPSocket.framework;
+			remoteRef = 52C05BCB19C72F0300E5827D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		52C05BCE19C72F0300E5827D /* DeferredTCPSocketTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DeferredTCPSocketTests.xctest;
+			remoteRef = 52C05BCD19C72F0300E5827D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		52C05BD019C72F0300E5827D /* DeferredTCPSocketMac.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DeferredTCPSocketMac.framework;
+			remoteRef = 52C05BCF19C72F0300E5827D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		52C05BD219C72F0300E5827D /* DeferredTCPSocketMacTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DeferredTCPSocketMacTests.xctest;
+			remoteRef = 52C05BD119C72F0300E5827D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		52C05B4819C38E3100E5827D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52C05B5A19C38E3100E5827D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52C05B4619C38E3100E5827D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52C05B8419C38E6200E5827D /* CommandParser.swift in Sources */,
+				52C05B5019C38E3100E5827D /* main.swift in Sources */,
+				52C05B8F19C3909C00E5827D /* ChatServer.swift in Sources */,
+				52C05B8D19C3905900E5827D /* Support.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52C05B5819C38E3100E5827D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52C05B6319C38E3100E5827D /* ChatServerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52C05B5E19C38E3100E5827D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52C05B4919C38E3100E5827D /* ChatServer */;
+			targetProxy = 52C05B5D19C38E3100E5827D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		52C05B6419C38E3100E5827D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		52C05B6519C38E3100E5827D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		52C05B6719C38E3100E5827D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/ChatServer-fkxustqqtlwoacakzvsfaplnwxqp/Build/Products/Debug",
+					/Users/john/Documents/bignerdranch/DeferredTCPSocket/DeferredIO/Deferred/build/Debug,
+					/Users/john/Documents/bignerdranch/DeferredTCPSocket/Deferred/build/Debug,
+				);
+				INFOPLIST_FILE = ChatServer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		52C05B6819C38E3100E5827D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/ChatServer-fkxustqqtlwoacakzvsfaplnwxqp/Build/Products/Debug",
+					/Users/john/Documents/bignerdranch/DeferredTCPSocket/DeferredIO/Deferred/build/Debug,
+					/Users/john/Documents/bignerdranch/DeferredTCPSocket/Deferred/build/Debug,
+				);
+				INFOPLIST_FILE = ChatServer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		52C05B6A19C38E3100E5827D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ChatServerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatServer.app/Contents/MacOS/ChatServer";
+			};
+			name = Debug;
+		};
+		52C05B6B19C38E3100E5827D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ChatServerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatServer.app/Contents/MacOS/ChatServer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		52C05B4519C38E3100E5827D /* Build configuration list for PBXProject "ChatServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52C05B6419C38E3100E5827D /* Debug */,
+				52C05B6519C38E3100E5827D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52C05B6619C38E3100E5827D /* Build configuration list for PBXNativeTarget "ChatServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52C05B6719C38E3100E5827D /* Debug */,
+				52C05B6819C38E3100E5827D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52C05B6919C38E3100E5827D /* Build configuration list for PBXNativeTarget "ChatServerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52C05B6A19C38E3100E5827D /* Debug */,
+				52C05B6B19C38E3100E5827D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 52C05B4219C38E3100E5827D /* Project object */;
+}
