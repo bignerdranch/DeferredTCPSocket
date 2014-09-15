@@ -81,7 +81,18 @@ class ConnectViewController: UIViewController, UITextFieldDelegate {
                 self.userDefaults.username = name
 
             case let .Failure(error):
-                NSLog("Connection failed: \(error)")
+                var message = "Unknown error occurred"
+                if let libcError = error as? LibCError {
+                    if let errnoString = String(UTF8String: strerror(libcError.errno)) {
+                        message = "Error: \(libcError.functionName) failed with \(errnoString)"
+                    }
+                }
+                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { [weak alert] _ in
+                    alert?.dismissViewControllerAnimated(true, completion: nil)
+                    return
+                }))
+                self.presentViewController(alert, animated: true, completion: nil)
             }
         }
     }
