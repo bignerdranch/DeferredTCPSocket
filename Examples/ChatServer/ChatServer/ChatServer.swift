@@ -73,11 +73,11 @@ class ChatServer {
     private func addNewClient(client: Client) {
         assertOnPrivateQueue()
         if clients[client.username] != nil {
-            client.writeString("e:Username is taken. Bye.\n")
+            client.writeString("x:Username is taken. Bye.\n")
             return
         }
         if contains(client.username, CommandDelimiterCharacter) {
-            client.writeString("e:Invalid username. Bye.\n")
+            client.writeString("x:Invalid username. Bye.\n")
             return
         }
 
