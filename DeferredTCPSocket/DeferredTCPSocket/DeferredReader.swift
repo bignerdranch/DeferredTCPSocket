@@ -37,6 +37,7 @@ public class DeferredReader: ReadOperationDelegate {
     public func close() {
         if !closed {
             operationQueue.cancelAllOperations()
+            operationQueue.waitUntilAllOperationsAreFinished()
 
             dispatch_source_cancel(source)
             dispatch_resume(source)
