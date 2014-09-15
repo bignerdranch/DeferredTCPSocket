@@ -14,8 +14,8 @@ import DeferredTCPSocketMac
 private let CommandDelimiterCharacter: Character = "\n"
 private let CommandDelimiter = String(CommandDelimiterCharacter).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
 private let HandshakeTimeout = NSTimeInterval(10)
-private let CommandTimeout = NSTimeInterval(60)
-private let MaxCommandLength = UInt(128)
+private let CommandTimeout = NSTimeInterval(120)
+private let MaxCommandLength = UInt(16384)
 
 extension TCPCommSocket {
     func readStringToCommandDelimiter() -> Deferred<Result<String>> {
