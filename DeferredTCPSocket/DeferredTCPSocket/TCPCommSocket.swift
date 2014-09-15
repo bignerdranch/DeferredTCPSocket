@@ -10,13 +10,64 @@ import Foundation
 import Darwin
 #if os(iOS)
 import Deferred
+import Result
 #else
 import DeferredMac
+import ResultMac
 #endif
 
 public class TCPCommSocket {
     private let reader: DeferredReader
     private let writer: DeferredWriter
+
+    public class func connectToHost(host: String, serviceOrPort: String) -> Deferred<Result<TCPCommSocket>> {
+        let deferred = Deferred<Result<TCPCommSocket>>()
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            var addr: UnsafeMutablePointer<addrinfo> = nil
+            var sockfd: Int32 = 0
+
+            let cleanupWithError: String -> () = { functionName in
+                let e = errno
+                if addr != nil {
+                    freeaddrinfo(addr)
+                }
+                if sockfd > 0 {
+                    Darwin.close(sockfd)
+                }
+                deferred.fill(.Failure(LibCError(functionName: functionName, errno: e)))
+            }
+
+            var hints = addrinfo(
+                ai_flags: 0,
+                ai_family: PF_UNSPEC,
+                ai_socktype: SOCK_STREAM,
+                ai_protocol: IPPROTO_TCP,
+                ai_addrlen: 0,
+                ai_canonname: nil,
+                ai_addr: nil,
+                ai_next: nil)
+            if getaddrinfo(host, serviceOrPort, &hints, &addr) != 0 {
+                return cleanupWithError("getaddrinfo")
+            }
+
+            sockfd = socket(addr.memory.ai_family, addr.memory.ai_socktype, addr.memory.ai_protocol)
+            if sockfd < 0 {
+                return cleanupWithError("sockfd")
+            }
+
+            if connect(sockfd, addr.memory.ai_addr, addr.memory.ai_addrlen) != 0 {
+                return cleanupWithError("connect")
+            }
+
+            // success!
+            let commSocket = TCPCommSocket(fd: sockfd)
+            deferred.fill(.Success(commSocket))
+            freeaddrinfo(addr)
+        }
+
+        return deferred
+    }
 
     public init(fd: Int32) {
         let cleanupQueue = dispatch_queue_create("TCPCommSocket.cleanupQueue", DISPATCH_QUEUE_SERIAL)
