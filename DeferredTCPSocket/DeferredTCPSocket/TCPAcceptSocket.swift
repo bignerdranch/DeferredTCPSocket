@@ -22,8 +22,8 @@ private func socklen_of<T>(x: T) -> socklen_t {
 }
 
 public struct LibCError: ErrorType {
-    let functionName: String
-    let errno: Int32
+    public let functionName: String
+    public let errno: Int32
 
     public var description: String {
         return "TCPAcceptSocket.Error: \(functionName) failed with errno \(errno)"
