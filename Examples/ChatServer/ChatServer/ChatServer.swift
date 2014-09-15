@@ -100,8 +100,18 @@ class ChatServer {
                 self.readCommandFromClient(client)
 
             case let .Failure(error):
-                NSLog("Error reading from \(client.username) (\(error)) - disconnecting them")
-                self.removeClient(client)
+                var shouldRemoveImmediately = true
+                if let readError = error as? ReadError {
+                    if readError == .Timeout {
+                        client.writeString("x:Idle for too long. Bye!\n").uponQueue(self.queue, { _ in self.removeClient(client) })
+                        shouldRemoveImmediately = false
+                    }
+                }
+
+                if shouldRemoveImmediately {
+                    NSLog("Error reading from \(client.username) (\(error)) - disconnecting them")
+                    self.removeClient(client)
+                }
             }
         }
     }
