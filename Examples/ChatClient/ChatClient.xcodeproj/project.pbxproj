@@ -20,6 +20,8 @@
 		52C05C4F19C75F3600E5827D /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05C4E19C75F3600E5827D /* MessageTableViewCell.swift */; };
 		52C05C5119C75F4100E5827D /* ConnectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05C5019C75F4100E5827D /* ConnectionTableViewCell.swift */; };
 		52C05C5319C75F4800E5827D /* EmoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05C5219C75F4800E5827D /* EmoteTableViewCell.swift */; };
+		52C61AF019C7AB1200ADDEB5 /* MessageTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61AEF19C7AB1200ADDEB5 /* MessageTableViewDataSource.swift */; };
+		52C61AF619C7B21D00ADDEB5 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C61AF519C7B21D00ADDEB5 /* Support.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		52C05C4E19C75F3600E5827D /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		52C05C5019C75F4100E5827D /* ConnectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionTableViewCell.swift; sourceTree = "<group>"; };
 		52C05C5219C75F4800E5827D /* EmoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoteTableViewCell.swift; sourceTree = "<group>"; };
+		52C61AEF19C7AB1200ADDEB5 /* MessageTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewDataSource.swift; sourceTree = "<group>"; };
+		52C61AF519C7B21D00ADDEB5 /* Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +130,9 @@
 				52C05BF619C7315500E5827D /* ConnectViewController.swift */,
 				52C05C4519C740E600E5827D /* ChatViewController.swift */,
 				52C05C4719C7563C00E5827D /* ChatConnection.swift */,
+				52C61AEF19C7AB1200ADDEB5 /* MessageTableViewDataSource.swift */,
 				52C05C4919C7575F00E5827D /* MessageParser.swift */,
+				52C61AF519C7B21D00ADDEB5 /* Support.swift */,
 				52C05BF819C7315500E5827D /* Main.storyboard */,
 				52C05BFB19C7315500E5827D /* Images.xcassets */,
 				52C05BFD19C7315500E5827D /* LaunchScreen.xib */,
@@ -319,7 +325,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				52C05C5319C75F4800E5827D /* EmoteTableViewCell.swift in Sources */,
+				52C61AF619C7B21D00ADDEB5 /* Support.swift in Sources */,
 				52C05C4F19C75F3600E5827D /* MessageTableViewCell.swift in Sources */,
+				52C61AF019C7AB1200ADDEB5 /* MessageTableViewDataSource.swift in Sources */,
 				52C05BF719C7315500E5827D /* ConnectViewController.swift in Sources */,
 				52C05C4619C740E600E5827D /* ChatViewController.swift in Sources */,
 				52C05BF519C7315500E5827D /* AppDelegate.swift in Sources */,

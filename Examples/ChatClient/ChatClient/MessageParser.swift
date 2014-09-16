@@ -15,25 +15,22 @@ struct InvalidMessageError: ErrorType {
     }
 }
 
-enum Message: Printable {
+enum Message {
     case Connect(String)
     case Disconnect(String)
     case Emote(username: String, contents: String)
     case Message(username: String, contents: String)
-    case Error(String)
+}
 
-    var description: String {
-        switch self {
-        case let .Connect(username): return "Connect(\(username))"
-        case let .Disconnect(username): return "Disconnect(\(username))"
-        case let .Emote(username: username, contents: contents): return "Emote(\(username):\(contents))"
-        case let .Message(username: username, contents: contents): return "Message(\(username):\(contents))"
-        case let .Error(message): return "Error(\(message))"
-        }
+struct ServerError: ErrorType {
+    let description: String
+
+    init(description: String) {
+        self.description = description
     }
 }
 
-private func createParser<T>(prefix: String, toResult: String -> Result<T>) -> String -> Result<T> {
+private func createParser<T>(prefix: String, toResult: String -> Result<T>) -> String -> Result<T>? {
     return { str in
         NSLog("trying to parse \(str) for \(prefix)")
         if startsWith(str, prefix) {
@@ -44,7 +41,7 @@ private func createParser<T>(prefix: String, toResult: String -> Result<T>) -> S
                 return toResult(contents)
             }
         } else {
-            return .Failure(InvalidMessageError())
+            return nil
         }
     }
 }
@@ -58,26 +55,21 @@ private func parseUsernameAndContents(input: String) -> Result<(username: String
     }
 }
 
-private let MessageParsers: [String -> Result<Message>] = [
+private let MessageParsers: [String -> Result<Message>?] = [
     // NOTE: These parsers are tried in order, and a successful parse prevents
     // later parsers from being called. Order these with the most common
     // message types first.
-    createParser("m:", { rest -> Result<Message> in parseUsernameAndContents(rest).map { Message.Message($0) } }),
-    createParser("e:", { rest -> Result<Message> in parseUsernameAndContents(rest).map { Message.Emote($0) } }),
+    createParser("m:", { parseUsernameAndContents($0).map { .Message($0) } }),
+    createParser("e:", { parseUsernameAndContents($0).map { .Emote($0) } }),
     createParser("c:", { username in .Success(.Connect(username)) }),
     createParser("d:", { username in .Success(.Disconnect(username)) }),
-    createParser("x:", { error in .Success(.Error(error)) }),
+    createParser("x:", { error in .Failure(ServerError(description: error)) }),
 ]
-
-func first<S: SequenceType>(sequence: S) -> S.Generator.Element? {
-    var generator = sequence.generate()
-    return generator.next()
-}
 
 func MessageParser(str: String) -> Result<Message> {
     // lazily call the parsers, and the first time one returns an Ok result, return that result
-    if let result = first(lazy(MessageParsers).map({ parser in parser(str) }).filter({ result in result.isSuccess })) {
-        return result
+    if let result = first(lazy(MessageParsers).map({ parser in parser(str) }).filter({ $0 != nil })) {
+        return result!
     }
     // no parsers returned ok - must be invalid
     return .Failure(InvalidMessageError())

@@ -15,7 +15,7 @@ private let MessageDelimiterCharacter: Character = "\n"
 private let MessageDelimiter = String(MessageDelimiterCharacter).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
 private let MaxMessageLength = UInt(16384)
 
-extension TCPCommSocket {
+private extension TCPCommSocket {
     func readStringToMessageDelimiter() -> Deferred<Result<String>> {
         return self.readDataToDelimiter(MessageDelimiter, maxLength: MaxMessageLength).map {
             readResult in
@@ -38,38 +38,38 @@ extension TCPCommSocket {
 }
 
 protocol ChatConnectionDelegate: class {
+    func chatConnection(ChatConnection, didReceiveMessage: Message)
     func chatConnection(ChatConnection, didFailWithError: ErrorType)
-    func chatConnection(ChatConnection, didReceiveErrorMessage: String)
 }
 
-class ChatConnection: NSObject, UITableViewDataSource {
+class ChatConnection: NSObject {
     let socket: TCPCommSocket
-    let tableView: UITableView
-    var messages = [Message]()
     weak var delegate: ChatConnectionDelegate?
 
-    init(delegate: ChatConnectionDelegate, socket: TCPCommSocket, tableView: UITableView) {
-        self.delegate = delegate
+    init(socket: TCPCommSocket) {
         self.socket = socket
-        self.tableView = tableView
         super.init()
+    }
 
-        tableView.dataSource = self
-        tableView.reloadData()
-        readMessage()
+    func close() {
+        delegate = nil
+        socket.close()
     }
 
     func readMessage() {
         socket.readStringToMessageDelimiter().uponQueue(dispatch_get_main_queue()) { [weak self] result in
-            if let strelf = self {
-                switch result.bind(MessageParser) {
-                case let .Success(message):
-                    strelf.handleNewMessage(message())
+            self?.handleIncomingMessage(result.bind(MessageParser))
+            return
+        }
+    }
 
-                case let .Failure(error):
-                    strelf.delegate?.chatConnection(strelf, didFailWithError: error)
-                }
-            }
+    private func handleIncomingMessage(result: Result<Message>) {
+        switch result {
+        case let .Success(message):
+            self.delegate?.chatConnection(self, didReceiveMessage: message())
+
+        case let .Failure(error):
+            self.delegate?.chatConnection(self, didFailWithError: error)
         }
     }
 
@@ -93,57 +93,5 @@ class ChatConnection: NSObject, UITableViewDataSource {
                 }
             }
         }
-
     }
-
-    func handleNewMessage(message: Message) {
-        switch message {
-        case let .Error(error):
-            delegate?.chatConnection(self, didReceiveErrorMessage: error)
-
-        case .Connect, .Disconnect, .Emote, .Message:
-            messages.insert(message, atIndex: 0)
-
-            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            readMessage()
-        }
-    }
-
-    //MARK: UITableViewDataSource
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
-    }
-
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let message = messages[indexPath.row]
-
-        switch message {
-        case let .Connect(username):
-            let cell = tableView.dequeueReusableCellWithIdentifier("ConnectionTableViewCell") as ConnectionTableViewCell
-            cell.setUsername(username, connected: true)
-            return cell
-
-        case let .Disconnect(username):
-            let cell = tableView.dequeueReusableCellWithIdentifier("ConnectionTableViewCell") as ConnectionTableViewCell
-            cell.setUsername(username, connected: false)
-            return cell
-
-        case let .Message(username: username, contents: contents):
-            let cell = tableView.dequeueReusableCellWithIdentifier("MessageTableViewCell") as MessageTableViewCell
-            cell.setUsername(username, message: contents)
-            return cell
-
-        case let .Emote(username: username, contents: contents):
-            let cell = tableView.dequeueReusableCellWithIdentifier("EmoteTableViewCell") as EmoteTableViewCell
-            cell.setUsername(username, emote: contents)
-            return cell
-
-        case .Error:
-            fatalError("Invalid message type to display in table")
-        }
-    }
-
-
 }

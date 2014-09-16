@@ -14,7 +14,8 @@ class ChatViewController: UIViewController, UITextFieldDelegate, ChatConnectionD
     var socket: TCPCommSocket!
     var name: String!
     var connection: ChatConnection!
-    var isDismissing = false
+
+    let messageDataSource = MessageTableViewDataSource()
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
@@ -26,50 +27,52 @@ class ChatViewController: UIViewController, UITextFieldDelegate, ChatConnectionD
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.sectionHeaderHeight = 0.1;
         tableView.sectionFooterHeight = 0.1;
+        tableView.dataSource = messageDataSource
 
-        connection = ChatConnection(delegate: self, socket: socket, tableView: tableView)
         navigationItem.title = "Connected as \(name)"
         messageTextField.delegate = self
+
+        connection = ChatConnection(socket: socket)
+        connection.delegate = self
+        connection.readMessage()
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        sendMessage()
+        sendMessage(connection.sendMessage)
         return true
     }
 
     @IBAction func sendButtonPressed(sender: AnyObject) {
-        sendMessage()
+        sendMessage(connection.sendMessage)
     }
 
     @IBAction func emoteButtonPressed(sender: AnyObject) {
-        connection.sendEmote(messageTextField.text)
-        messageTextField.resignFirstResponder()
-        messageTextField.text = ""
+        sendMessage(connection.sendEmote)
     }
 
     @IBAction func doneButtonPressed(sender: AnyObject) {
-        isDismissing = true
-        socket.close()
+        connection.close()
         dismissViewControllerAnimated(true, completion: nil)
     }
 
-    func sendMessage() {
-        connection.sendMessage(messageTextField.text)
+    func sendMessage(handler: String -> Void) {
+        handler(messageTextField.text)
 
         messageTextField.resignFirstResponder()
         messageTextField.text = ""
     }
 
-    func chatConnection(_: ChatConnection, didFailWithError: ErrorType) {
-        if !isDismissing {
-            dismissViewControllerAnimated(true, completion: nil)
-        }
+    func chatConnection(connection: ChatConnection, didReceiveMessage message: Message) {
+        tableView.insertRowsAtIndexPaths([ messageDataSource.addMessage(message) ],
+            withRowAnimation: .Automatic)
+        connection.readMessage()
     }
 
-    func chatConnection(_: ChatConnection, didReceiveErrorMessage message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { _ in self.dismissViewControllerAnimated(true, completion: nil) }))
+    func chatConnection(_: ChatConnection, didFailWithError error: ErrorType) {
+        let alert = UIAlertController(error: error, handler: { [weak self] in
+            self?.dismissViewControllerAnimated(true, completion: nil)
+            return
+        })
         presentViewController(alert, animated: true, completion: nil)
-        isDismissing = true
     }
 }
