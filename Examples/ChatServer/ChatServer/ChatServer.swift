@@ -72,11 +72,11 @@ class ChatServer {
     private func addNewClient(client: Client) {
         assertOnPrivateQueue()
         if clients[client.username] != nil {
-            client.writeString("x:Username is taken. Bye.\n")
+            client.writeString("x:Username is taken. Bye.\n").upon { _ in client.sock.close() }
             return
         }
         if contains(client.username, ":") {
-            client.writeString("x:Invalid username. Bye.\n")
+            client.writeString("x:Invalid username. Bye.\n").upon { _ in client.sock.close() }
             return
         }
 
