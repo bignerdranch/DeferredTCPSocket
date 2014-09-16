@@ -44,7 +44,6 @@ protocol ChatConnectionDelegate: class {
 
 class ChatConnection: NSObject {
     let socket: TCPCommSocket
-    weak var delegate: ChatConnectionDelegate?
 
     init(socket: TCPCommSocket) {
         self.socket = socket
@@ -52,46 +51,22 @@ class ChatConnection: NSObject {
     }
 
     func close() {
-        delegate = nil
         socket.close()
     }
 
-    func readMessage() {
-        socket.readStringToMessageDelimiter().uponQueue(dispatch_get_main_queue()) { [weak self] result in
-            self?.handleIncomingMessage(result.bind(MessageParser))
-            return
-        }
+    func readMessage() -> Deferred<Result<Message>> {
+        return socket.readStringToMessageDelimiter().map { $0.bind(MessageParser) }
     }
 
-    private func handleIncomingMessage(result: Result<Message>) {
-        switch result {
-        case let .Success(message):
-            self.delegate?.chatConnection(self, didReceiveMessage: message())
-
-        case let .Failure(error):
-            self.delegate?.chatConnection(self, didFailWithError: error)
-        }
+    func sendMessage(message: String) -> Deferred<WriteResult> {
+        return sendString("m:\(message)\n")
     }
 
-    func sendMessage(message: String) {
-        if !message.isEmpty {
-            sendString("m:\(message)\n")
-        }
+    func sendEmote(message: String) -> Deferred<WriteResult> {
+        return sendString("e:\(message)\n")
     }
 
-    func sendEmote(message: String) {
-        if !message.isEmpty {
-            sendString("e:\(message)\n")
-        }
-    }
-
-    private func sendString(s: String) {
-        socket.writeString(s, withEncoding: NSUTF8StringEncoding).uponQueue(dispatch_get_main_queue()) { [weak self] in
-            if let strelf = self {
-                if let error = $0.failureValue {
-                    strelf.delegate?.chatConnection(strelf, didFailWithError: error)
-                }
-            }
-        }
+    private func sendString(s: String) -> Deferred<WriteResult> {
+        return socket.writeString(s, withEncoding: NSUTF8StringEncoding)
     }
 }

@@ -8,9 +8,10 @@
 
 import UIKit
 import DeferredTCPSocket
+import Deferred
 import Result
 
-class ChatViewController: UIViewController, UITextFieldDelegate, ChatConnectionDelegate {
+class ChatViewController: UIViewController, UITextFieldDelegate {
     var socket: TCPCommSocket!
     var name: String!
     var connection: ChatConnection!
@@ -33,8 +34,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate, ChatConnectionD
         messageTextField.delegate = self
 
         connection = ChatConnection(socket: socket)
-        connection.delegate = self
-        connection.readMessage()
+        readMessage()
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -51,24 +51,44 @@ class ChatViewController: UIViewController, UITextFieldDelegate, ChatConnectionD
     }
 
     @IBAction func doneButtonPressed(sender: AnyObject) {
-        connection.close()
         dismissViewControllerAnimated(true, completion: nil)
     }
 
-    func sendMessage(handler: String -> Void) {
-        handler(messageTextField.text)
+    func sendMessage(handler: String -> Deferred<WriteResult>) {
+        if messageTextField.text.isEmpty {
+            return
+        }
+
+        handler(messageTextField.text).uponQueue(dispatch_get_main_queue()) { [weak self] result in
+            if let error = result.failureValue {
+                self?.presentAlertForError(error)
+            }
+        }
 
         messageTextField.resignFirstResponder()
         messageTextField.text = ""
     }
 
-    func chatConnection(connection: ChatConnection, didReceiveMessage message: Message) {
-        tableView.insertRowsAtIndexPaths([ messageDataSource.addMessage(message) ],
-            withRowAnimation: .Automatic)
-        connection.readMessage()
+    private func readMessage() {
+        connection.readMessage().uponQueue(dispatch_get_main_queue()) { [weak self] in
+            self?.handleReadMessageResult($0)
+            return
+        }
     }
 
-    func chatConnection(_: ChatConnection, didFailWithError error: ErrorType) {
+    private func handleReadMessageResult(result: Result<Message>) {
+        switch result {
+        case let .Success(message):
+            tableView.insertRowsAtIndexPaths([ messageDataSource.addMessage(message()) ],
+                withRowAnimation: .Automatic)
+            readMessage()
+
+        case let .Failure(error):
+            presentAlertForError(error)
+        }
+    }
+
+    private func presentAlertForError(error: ErrorType) {
         let alert = UIAlertController(error: error, handler: { [weak self] in
             self?.dismissViewControllerAnimated(true, completion: nil)
             return
