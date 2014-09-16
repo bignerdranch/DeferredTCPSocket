@@ -11,6 +11,16 @@ import DeferredTCPSocket
 import Deferred
 import Result
 
+private func checkForEmotePrefix(text: String) -> (String, Bool) {
+    let emotePrefix = "/me "
+
+    if let endOfPrefix = startsWithReturningIndex(text, emotePrefix) {
+        return (text.substringFromIndex(endOfPrefix), true)
+    } else {
+        return (text, false)
+    }
+}
+
 class ChatViewController: UIViewController, UITextFieldDelegate {
     var name: String!
     var connection: ChatConnection!
@@ -36,28 +46,27 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        sendMessage(connection.sendMessage)
+        sendMessage()
         return true
     }
 
     @IBAction func sendButtonPressed(sender: AnyObject) {
-        sendMessage(connection.sendMessage)
-    }
-
-    @IBAction func emoteButtonPressed(sender: AnyObject) {
-        sendMessage(connection.sendEmote)
+        sendMessage()
     }
 
     @IBAction func doneButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
-    func sendMessage(handler: String -> Deferred<WriteResult>) {
-        if messageTextField.text.isEmpty {
+    func sendMessage() {
+        let (text, isEmote) = checkForEmotePrefix(messageTextField.text)
+
+        if text.isEmpty {
             return
         }
 
-        handler(messageTextField.text).uponQueue(dispatch_get_main_queue()) { [weak self] result in
+        let handler = isEmote ? connection.sendEmote : connection.sendMessage
+        handler(text).uponQueue(dispatch_get_main_queue()) { [weak self] result in
             if let error = result.failureValue {
                 self?.presentAlertForError(error)
             }

@@ -114,11 +114,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CGb-pm-DRS">
-                                <rect key="frame" x="16" y="72" width="471" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coZ-vZ-NpW">
                                 <rect key="frame" x="548" y="71" width="36" height="30"/>
                                 <state key="normal" title="Send">
@@ -215,15 +210,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJa-nL-JtQ">
-                                <rect key="frame" x="495" y="71" width="45" height="30"/>
-                                <state key="normal" title="Emote">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="emoteButtonPressed:" destination="8vg-BO-eX7" eventType="touchUpInside" id="AVp-3K-PJ7"/>
-                                </connections>
-                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CGb-pm-DRS">
+                                <rect key="frame" x="16" y="72" width="524" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -233,11 +224,9 @@
                             <constraint firstItem="coZ-vZ-NpW" firstAttribute="baseline" secondItem="CGb-pm-DRS" secondAttribute="baseline" id="RgM-4d-LcH"/>
                             <constraint firstItem="CGb-pm-DRS" firstAttribute="leading" secondItem="SfQ-Ln-Xc6" secondAttribute="leadingMargin" id="YYh-Tz-uMr"/>
                             <constraint firstItem="coZ-vZ-NpW" firstAttribute="trailing" secondItem="SfQ-Ln-Xc6" secondAttribute="trailingMargin" id="cLq-T4-0ER"/>
-                            <constraint firstItem="AJa-nL-JtQ" firstAttribute="leading" secondItem="CGb-pm-DRS" secondAttribute="trailing" constant="8" id="h50-gq-CaZ"/>
-                            <constraint firstItem="coZ-vZ-NpW" firstAttribute="leading" secondItem="AJa-nL-JtQ" secondAttribute="trailing" constant="8" id="lhm-jf-wZI"/>
                             <constraint firstItem="SRE-T8-Xa0" firstAttribute="top" secondItem="Iqh-H8-bPC" secondAttribute="bottom" id="oO4-qv-7LF"/>
-                            <constraint firstItem="coZ-vZ-NpW" firstAttribute="baseline" secondItem="AJa-nL-JtQ" secondAttribute="baseline" id="pQr-0p-nbm"/>
                             <constraint firstItem="Iqh-H8-bPC" firstAttribute="top" secondItem="CGb-pm-DRS" secondAttribute="bottom" constant="8" id="wOX-Tf-QtN"/>
+                            <constraint firstItem="coZ-vZ-NpW" firstAttribute="leading" secondItem="CGb-pm-DRS" secondAttribute="trailing" constant="8" id="wqY-Hq-bV7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Connected as &lt;NAME>" id="H7w-9A-9jW">

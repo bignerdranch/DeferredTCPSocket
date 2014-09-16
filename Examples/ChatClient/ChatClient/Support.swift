@@ -15,6 +15,16 @@ func first<S: SequenceType>(sequence: S) -> S.Generator.Element? {
     return generator.next()
 }
 
+func startsWithReturningIndex<C: CollectionType, S: SequenceType where C.Generator.Element == S.Generator.Element, C.Generator.Element: Equatable>(c: C, prefix: S) -> C.Index? {
+    var cIndex = c.startIndex
+    for element in prefix {
+        if c[cIndex++] != element {
+            return nil
+        }
+    }
+    return cIndex
+}
+
 func userFacingDescription(error: ErrorType) -> String {
     switch error {
     case let serverError as ServerError:
