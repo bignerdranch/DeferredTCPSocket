@@ -65,46 +65,36 @@ class ConnectViewController: UIViewController, UITextFieldDelegate {
 
         let deferredSocket = TCPCommSocket.connectToHost(serverTextField.text, serviceOrPort: "13579")
 
-        let handshakeResult: Deferred<WriteResult> = deferredSocket.map { socketResult in
-            socketResult.bind { socket -> WriteResult in
-                socket.writeString("c:\(name)\n", withEncoding: NSUTF8StringEncoding).value
+        let deferredConnection: Deferred<Result<ChatConnection>> = deferredSocket.bind { socketResult in
+            switch socketResult {
+            case let .Success(socket):
+                return ChatConnection.handshakeOverSocket(name, socket: socket())
+
+            case let .Failure(error):
+                return Deferred(value: .Failure(error))
             }
         }
 
-        handshakeResult.uponQueue(dispatch_get_main_queue()) { result in
+        deferredConnection.uponQueue(dispatch_get_main_queue()) { result in
             self.connecting = false
 
             switch result {
-            case .Success:
-                self.presentChatViewControllerWithSocket(deferredSocket.value.successValue!, name: name)
+            case let .Success(connection):
+                self.presentChatViewControllerWithConnection(connection(), name: name)
                 self.userDefaults.host = host
                 self.userDefaults.username = name
 
             case let .Failure(error):
-                var message = "Unknown error occurred"
-                if let libcError = error as? LibCError {
-                    if let errnoString = String(UTF8String: strerror(libcError.errno)) {
-                        message = "Error: \(libcError.functionName) failed with \(errnoString)"
-                    }
-                }
-                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { [weak alert] _ in
-                    alert?.dismissViewControllerAnimated(true, completion: nil)
-                    return
-                }))
+                let alert = UIAlertController(error: error, handler: nil)
                 self.presentViewController(alert, animated: true, completion: nil)
             }
         }
     }
 
-    func sendChatName(socket: TCPCommSocket) -> Deferred<WriteResult> {
-        return socket.writeString("c:\(chatNameTextField.text)", withEncoding: NSUTF8StringEncoding)
-    }
-
-    func presentChatViewControllerWithSocket(socket: TCPCommSocket, name: String) {
+    func presentChatViewControllerWithConnection(connection: ChatConnection, name: String) {
         let chatNavigationVC = storyboard?.instantiateViewControllerWithIdentifier("ChatViewController") as? UINavigationController
         if let chatVC = chatNavigationVC?.viewControllers.first as? ChatViewController {
-            chatVC.socket = socket
+            chatVC.connection = connection
             chatVC.name = name
             showViewController(chatNavigationVC!, sender: self)
         }

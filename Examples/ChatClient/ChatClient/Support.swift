@@ -33,9 +33,17 @@ func userFacingDescription(error: ErrorType) -> String {
 }
 
 extension UIAlertController {
-    convenience init(error: ErrorType, handler: Void -> Void) {
+    convenience init(error: ErrorType, handler: (Void -> Void)?) {
         self.init(title: "Error", message: userFacingDescription(error), preferredStyle: .Alert)
 
-        addAction(UIAlertAction(title: "OK", style: .Default, handler: { _ in handler() }))
+        let title = "OK"
+        if let h = handler {
+            addAction(UIAlertAction(title: title, style: .Default, handler: { _ in h() }))
+        } else {
+            addAction(UIAlertAction(title: title, style: .Default, handler: { [weak self] _ in
+                self?.dismissViewControllerAnimated(true, completion: nil)
+                return
+            }))
+        }
     }
 }

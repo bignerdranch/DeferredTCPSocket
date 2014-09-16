@@ -43,7 +43,15 @@ protocol ChatConnectionDelegate: class {
 }
 
 class ChatConnection: NSObject {
-    let socket: TCPCommSocket
+    private let socket: TCPCommSocket
+
+    class func handshakeOverSocket(username: String, socket: TCPCommSocket) -> Deferred<Result<ChatConnection>> {
+        return socket.writeString("c:\(username)\n").map { writeResult in
+            writeResult.map {
+                ChatConnection(socket: socket)
+            }
+        }
+    }
 
     init(socket: TCPCommSocket) {
         self.socket = socket
@@ -67,6 +75,6 @@ class ChatConnection: NSObject {
     }
 
     private func sendString(s: String) -> Deferred<WriteResult> {
-        return socket.writeString(s, withEncoding: NSUTF8StringEncoding)
+        return socket.writeString(s)
     }
 }

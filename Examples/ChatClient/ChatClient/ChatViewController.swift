@@ -12,7 +12,6 @@ import Deferred
 import Result
 
 class ChatViewController: UIViewController, UITextFieldDelegate {
-    var socket: TCPCommSocket!
     var name: String!
     var connection: ChatConnection!
 
@@ -33,7 +32,6 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
         navigationItem.title = "Connected as \(name)"
         messageTextField.delegate = self
 
-        connection = ChatConnection(socket: socket)
         readMessage()
     }
 
