@@ -11,8 +11,7 @@ import ResultMac
 import DeferredMac
 import DeferredTCPSocketMac
 
-private let CommandDelimiterCharacter: Character = "\n"
-private let CommandDelimiter = String(CommandDelimiterCharacter).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+private let CommandDelimiter = "\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
 private let HandshakeTimeout = NSTimeInterval(10)
 private let CommandTimeout = NSTimeInterval(5)
 private let MaxCommandLength = UInt(16384)
@@ -76,7 +75,7 @@ class ChatServer {
             client.writeString("x:Username is taken. Bye.\n")
             return
         }
-        if contains(client.username, CommandDelimiterCharacter) {
+        if contains(client.username, ":") {
             client.writeString("x:Invalid username. Bye.\n")
             return
         }
