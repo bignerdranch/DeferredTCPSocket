@@ -9,6 +9,7 @@
 import Foundation
 import Result
 import DeferredTCPSocket
+import Deferred
 
 func first<S: SequenceType>(sequence: S) -> S.Generator.Element? {
     var generator = sequence.generate()
@@ -23,6 +24,16 @@ func startsWithReturningIndex<C: CollectionType, S: SequenceType where C.Generat
         }
     }
     return cIndex
+}
+
+func resultToDeferred<T,U>(r: Result<T>, f: T -> Deferred<Result<U>>) -> Deferred<Result<U>> {
+    switch r {
+    case let .Success(value):
+        return f(value())
+
+    case let .Failure(error):
+        return Deferred(value: .Failure(error))
+    }
 }
 
 func userFacingDescription(error: ErrorType) -> String {

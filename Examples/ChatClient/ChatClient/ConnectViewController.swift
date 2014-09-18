@@ -65,14 +65,11 @@ class ConnectViewController: UIViewController, UITextFieldDelegate {
 
         let deferredSocket = TCPCommSocket.connectToHost(serverTextField.text, serviceOrPort: "13579")
 
-        let deferredConnection: Deferred<Result<ChatConnection>> = deferredSocket.bind { socketResult in
-            switch socketResult {
-            case let .Success(socket):
-                return ChatConnection.handshakeOverSocket(name, socket: socket())
-
-            case let .Failure(error):
-                return Deferred(value: .Failure(error))
-            }
+        let handshakeOverSocket: TCPCommSocket -> Deferred<Result<ChatConnection>> = {
+            ChatConnection.handshakeOverSocket(name, socket: $0)
+        }
+        let deferredConnection: Deferred<Result<ChatConnection>> = deferredSocket.bind {
+            resultToDeferred($0, handshakeOverSocket)
         }
 
         deferredConnection.uponQueue(dispatch_get_main_queue()) { result in
