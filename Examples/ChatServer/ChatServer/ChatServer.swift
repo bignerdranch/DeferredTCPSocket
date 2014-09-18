@@ -13,7 +13,7 @@ import DeferredTCPSocketMac
 
 private let CommandDelimiter = "\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
 private let HandshakeTimeout = NSTimeInterval(10)
-private let CommandTimeout = NSTimeInterval(5)
+private let CommandTimeout = NSTimeInterval(120)
 private let MaxCommandLength = UInt(16384)
 
 extension TCPCommSocket {
