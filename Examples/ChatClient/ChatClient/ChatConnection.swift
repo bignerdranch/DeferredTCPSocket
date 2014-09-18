@@ -20,18 +20,13 @@ private extension TCPCommSocket {
         return self.readDataToDelimiter(MessageDelimiter, maxLength: MaxMessageLength).map {
             readResult in
 
-            switch readResult {
-            case let .Success(data):
-                let utf8String: NSString? = NSString(data: data(), encoding: NSUTF8StringEncoding)
-                if let s: String = utf8String {
-                    return .Success(s)
+            readResult.bind { data in
+                if let utf8String = NSString(data: data, encoding: NSUTF8StringEncoding) {
+                    return .Success(utf8String)
                 } else {
                     NSLog("Received non-UTF8 data; ignoring message")
                     return .Failure(InvalidMessageError())
                 }
-
-            case let .Failure(error):
-                return .Failure(error)
             }
         }
     }
