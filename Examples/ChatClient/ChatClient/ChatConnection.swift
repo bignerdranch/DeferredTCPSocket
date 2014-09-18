@@ -46,11 +46,25 @@ class ChatConnection: NSObject {
     private let socket: TCPCommSocket
 
     class func handshakeOverSocket(username: String, socket: TCPCommSocket) -> Deferred<Result<ChatConnection>> {
-        return socket.writeString("c:\(username)\n").map { writeResult in
-            writeResult.map {
-                ChatConnection(socket: socket)
+        let connection = ChatConnection(socket: socket)
+
+        // After we connect, we should immediately get back a Connect message on success.
+        // This closure confirms that we do, and returns the connection if so.
+        let confirmResponse: () -> Deferred<Result<ChatConnection>> = {
+            connection.readMessage().map { messageResult in
+                messageResult.bind { message in
+                    switch message {
+                    case .Connect:
+                        return .Success(connection)
+
+                    case .Disconnect, .Emote, .Message:
+                        return .Failure(ServerError(description: "Unexpected handshake response from server"))
+                    }
+                }
             }
         }
+
+        return socket.writeString("c:\(username)\n").bind { resultToDeferred($0, confirmResponse) }
     }
 
     init(socket: TCPCommSocket) {
