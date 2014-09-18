@@ -69,7 +69,7 @@ public class TCPCommSocket {
         return deferred
     }
 
-    public init(fd: Int32) {
+    init(fd: Int32) {
         let cleanupQueue = dispatch_queue_create("TCPCommSocket.cleanupQueue", DISPATCH_QUEUE_SERIAL)
 
         if fcntl_set_O_NONBLOCK(fd) < 0 {

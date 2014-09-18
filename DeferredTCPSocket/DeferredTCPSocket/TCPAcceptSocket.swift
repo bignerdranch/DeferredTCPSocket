@@ -85,7 +85,7 @@ public class TCPAcceptSocket {
     private let queue = dispatch_queue_create("TCPAcceptSocket", DISPATCH_QUEUE_SERIAL)
     private let connHandler: ConnectionHandler
 
-    public init(fd: Int32, withConnectionHandler connHandler: ConnectionHandler) {
+    private init(fd: Int32, withConnectionHandler connHandler: ConnectionHandler) {
         NSLog("accepting on \(fd)")
         self.source = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(fd), 0, queue)
         self.connHandler = connHandler
