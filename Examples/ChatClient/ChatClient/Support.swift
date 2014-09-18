@@ -19,6 +19,9 @@ func first<S: SequenceType>(sequence: S) -> S.Generator.Element? {
 func startsWithReturningIndex<C: CollectionType, S: SequenceType where C.Generator.Element == S.Generator.Element, C.Generator.Element: Equatable>(c: C, prefix: S) -> C.Index? {
     var cIndex = c.startIndex
     for element in prefix {
+        if cIndex == c.endIndex {
+            return nil
+        }
         if c[cIndex++] != element {
             return nil
         }
