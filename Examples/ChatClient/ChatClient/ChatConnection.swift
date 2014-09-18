@@ -42,7 +42,7 @@ protocol ChatConnectionDelegate: class {
     func chatConnection(ChatConnection, didFailWithError: ErrorType)
 }
 
-class ChatConnection: NSObject {
+class ChatConnection {
     private let socket: TCPCommSocket
 
     class func handshakeOverSocket(username: String, socket: TCPCommSocket) -> Deferred<Result<ChatConnection>> {
@@ -69,7 +69,6 @@ class ChatConnection: NSObject {
 
     init(socket: TCPCommSocket) {
         self.socket = socket
-        super.init()
     }
 
     func close() {
