@@ -106,6 +106,20 @@
 			remoteGlobalIDString = 52B9AF4519C35F5F0039E5D7;
 			remoteInfo = ResultMacTests;
 		};
+		691066FA19CA68AC00B6A335 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BA519C72B7100E5827D /* Deferred.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B9AF1819C35F110039E5D7;
+			remoteInfo = DeferredMac;
+		};
+		691066FC19CA68AC00B6A335 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BB419C72B7400E5827D /* Result.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B9AF3A19C35F5F0039E5D7;
+			remoteInfo = ResultMac;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -373,6 +387,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				691066FB19CA68AC00B6A335 /* PBXTargetDependency */,
+				691066FD19CA68AC00B6A335 /* PBXTargetDependency */,
 			);
 			name = DeferredTCPSocketMac;
 			productName = DeferredTCPSocketMac;
@@ -599,6 +615,16 @@
 			isa = PBXTargetDependency;
 			target = 52B9AFDB19C36ABA0039E5D7 /* DeferredTCPSocketMac */;
 			targetProxy = 52B9AFE819C36ABA0039E5D7 /* PBXContainerItemProxy */;
+		};
+		691066FB19CA68AC00B6A335 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DeferredMac;
+			targetProxy = 691066FA19CA68AC00B6A335 /* PBXContainerItemProxy */;
+		};
+		691066FD19CA68AC00B6A335 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ResultMac;
+			targetProxy = 691066FC19CA68AC00B6A335 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
