@@ -33,6 +33,8 @@
 		52C05BA319C728DF00E5827D /* WriteOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9919C728DF00E5827D /* WriteOperations.swift */; };
 		52C05C4219C7395F00E5827D /* Deferred.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BAD19C72B7100E5827D /* Deferred.framework */; };
 		52C05C4319C7395F00E5827D /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BBC19C72B7400E5827D /* Result.framework */; };
+		69356D5519E587AB009F3238 /* TCPCommSocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69356D5419E587AB009F3238 /* TCPCommSocketTests.swift */; };
+		69356D5D19E587D2009F3238 /* TCPAcceptSocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69356D5C19E587D2009F3238 /* TCPAcceptSocketTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +148,8 @@
 		52C05B9919C728DF00E5827D /* WriteOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteOperations.swift; sourceTree = "<group>"; };
 		52C05BA519C72B7100E5827D /* Deferred.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Deferred.xcodeproj; path = ../Deferred/Deferred.xcodeproj; sourceTree = "<group>"; };
 		52C05BB419C72B7400E5827D /* Result.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Result.xcodeproj; path = ../Result/Result.xcodeproj; sourceTree = "<group>"; };
+		69356D5419E587AB009F3238 /* TCPCommSocketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPCommSocketTests.swift; sourceTree = "<group>"; };
+		69356D5C19E587D2009F3238 /* TCPAcceptSocketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPAcceptSocketTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +272,8 @@
 			isa = PBXGroup;
 			children = (
 				52B9AFED19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift */,
+				69356D5419E587AB009F3238 /* TCPCommSocketTests.swift */,
+				69356D5C19E587D2009F3238 /* TCPAcceptSocketTests.swift */,
 				52B9AFEB19C36ABA0039E5D7 /* Supporting Files */,
 			);
 			path = DeferredTCPSocketMacTests;
@@ -599,6 +605,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69356D5519E587AB009F3238 /* TCPCommSocketTests.swift in Sources */,
+				69356D5D19E587D2009F3238 /* TCPAcceptSocketTests.swift in Sources */,
 				52B9AFEE19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
