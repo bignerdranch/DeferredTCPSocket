@@ -8,6 +8,8 @@
 
 import Cocoa
 import XCTest
+import DeferredTCPSocketMac
+import ResultMac
 
 class TCPAcceptSocketTests: XCTestCase {
 
@@ -22,7 +24,15 @@ class TCPAcceptSocketTests: XCTestCase {
     }
 
     func testAccept_validPort() {
-        XCTFail("not implemented")
+        let connHandler = TCPAcceptSocket.ConnectionHandler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), callback: { commSocket in
+            // do-nothing
+            })
+        
+        let result = TCPAcceptSocket.accept(onPort: 12345, withConnectionHandler: connHandler)
+        XCTAssertNotNil(result.successValue, "Should have a success value")
+        if let acceptSocket = result.successValue {
+            acceptSocket.close()
+        }
     }
     
     func testAccept_portRequiringRoot() {
