@@ -35,6 +35,8 @@
 		52C05C4319C7395F00E5827D /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BBC19C72B7400E5827D /* Result.framework */; };
 		69356D5519E587AB009F3238 /* TCPCommSocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69356D5419E587AB009F3238 /* TCPCommSocketTests.swift */; };
 		69356D5D19E587D2009F3238 /* TCPAcceptSocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69356D5C19E587D2009F3238 /* TCPAcceptSocketTests.swift */; };
+		69356D6319E597F5009F3238 /* DeferredMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BB119C72B7100E5827D /* DeferredMac.framework */; };
+		69356D6719E597FB009F3238 /* ResultMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BC019C72B7400E5827D /* ResultMac.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +176,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69356D6719E597FB009F3238 /* ResultMac.framework in Frameworks */,
+				69356D6319E597F5009F3238 /* DeferredMac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
