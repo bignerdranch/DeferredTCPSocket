@@ -8,6 +8,9 @@
 
 import Cocoa
 import XCTest
+import DeferredTCPSocketMac
+import DeferredMac
+import ResultMac
 
 class TCPCommSocketTests: XCTestCase {
 
@@ -22,8 +25,37 @@ class TCPCommSocketTests: XCTestCase {
     }
 
     func testConnectToHost_validHostAndPort() {
-        // expect a Deferred filled with .Success(TCPCommSocket)
-        XCTFail("not implemented")
+        // set up a netcat server
+        let port = 12346
+        let netcat = NSTask()
+        netcat.launchPath = "/usr/bin/nc"
+        netcat.arguments = ["-l", String(port)]
+        
+        let outpipe = NSPipe()
+        netcat.standardOutput = outpipe
+        netcat.launch()
+        // oh this is ugly. how else to wait for the task to launch?
+        // if we don't wait, we'll get "connection refused" right below
+        sleep(1)
+        
+        // connect to the server on that port and send EOF
+        // expect a Deferred to be filled with .Success(TCPCommSocket)
+        let deferredResultSocket = TCPCommSocket.connectToHost("localhost", serviceOrPort: String(port))
+        // wait for the value to be filled
+        let resultSocket = deferredResultSocket.value
+        if let socket = resultSocket.successValue {
+            // wrap up the EOT char (0x04) as 1-byte NSData
+            let eotData = NSData(bytes: [4] as [CChar], length: 1)
+            socket.writeData(eotData)
+            socket.close()
+        } else {
+            XCTFail("Could not connect: \(resultSocket.failureValue)")
+            netcat.terminate()
+        }
+        
+        // wait for netcat to finish
+        netcat.waitUntilExit()
+        XCTAssertEqual(netcat.terminationStatus, Int32(0), "netcat should exit with success")
     }
     
     func testConnectToHost_invalidHost() {
