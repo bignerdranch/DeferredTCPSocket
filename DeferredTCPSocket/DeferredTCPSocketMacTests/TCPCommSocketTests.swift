@@ -50,7 +50,7 @@ class TCPCommSocketTests: XCTestCase {
                 let eotData = NSData(bytes: [4] as [CChar], length: 1)
                 socket.writeData(eotData)
                 
-                // sleep here to make expectations fail
+                // MARK: sleep here to make expectations fail
 //                sleep(5)
                 
                 socket.close()
