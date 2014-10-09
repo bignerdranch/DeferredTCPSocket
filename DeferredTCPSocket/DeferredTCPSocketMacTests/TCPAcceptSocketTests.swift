@@ -84,7 +84,7 @@ class TCPAcceptSocketTests: XCTestCase {
                 let deferredReadResult = socket.readDataToLength(5)
                 // block waiting for value
                 let readResult = deferredReadResult.value
-                XCTAssertNotNil(readResult.successValue, "Should have a successful data result")
+                XCTAssertNotNil(readResult.successValue, "Should have a successful data result: \(readResult.failureValue)")
                 if let data = readResult.successValue {
                     let readString = NSString(data: data, encoding: NSUTF8StringEncoding)!
                     XCTAssertEqual(readString, "hello", "Should receive 'hello'")
