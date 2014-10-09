@@ -38,23 +38,35 @@ class TCPCommSocketTests: XCTestCase {
         // if we don't wait, we'll get "connection refused" right below
         sleep(1)
         
+        let connectExpectation = expectationWithDescription("connectToHost")
+        
         // connect to the server on that port and send EOF
         // expect a Deferred to be filled with .Success(TCPCommSocket)
         let deferredResultSocket = TCPCommSocket.connectToHost("localhost", serviceOrPort: String(port))
-        // wait for the value to be filled
-        let resultSocket = deferredResultSocket.value
-        if let socket = resultSocket.successValue {
-            // wrap up the EOT char (0x04) as 1-byte NSData
-            let eotData = NSData(bytes: [4] as [CChar], length: 1)
-            socket.writeData(eotData)
-            socket.close()
-        } else {
-            XCTFail("Could not connect: \(resultSocket.failureValue)")
-            netcat.terminate()
-        }
+        deferredResultSocket.upon({
+            (resultSocket : Result<TCPCommSocket>) in
+            if let socket = resultSocket.successValue {
+                // wrap up the EOT char (0x04) as 1-byte NSData
+                let eotData = NSData(bytes: [4] as [CChar], length: 1)
+                socket.writeData(eotData)
+                
+                // sleep here to make expectations fail
+//                sleep(5)
+                
+                socket.close()
+            } else {
+                XCTFail("Could not connect: \(resultSocket.failureValue)")
+                netcat.terminate()
+            }
+            connectExpectation.fulfill()
+        })
+        
+        // wait for expectations
+        waitForExpectationsWithTimeout(3, handler: nil)
         
         // wait for netcat to finish
         netcat.waitUntilExit()
+        
         XCTAssertEqual(netcat.terminationStatus, Int32(0), "netcat should exit with success")
     }
     
