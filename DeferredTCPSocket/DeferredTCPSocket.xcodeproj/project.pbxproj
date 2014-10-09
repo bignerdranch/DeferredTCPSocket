@@ -12,7 +12,6 @@
 		52B9AFB419C36A2B0039E5D7 /* DeferredTCPSocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9AFB319C36A2B0039E5D7 /* DeferredTCPSocketTests.swift */; };
 		52B9AFE119C36ABA0039E5D7 /* DeferredTCPSocketMac.h in Headers */ = {isa = PBXBuildFile; fileRef = 52B9AFE019C36ABA0039E5D7 /* DeferredTCPSocketMac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52B9AFE719C36ABA0039E5D7 /* DeferredTCPSocketMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B9AFDC19C36ABA0039E5D7 /* DeferredTCPSocketMac.framework */; };
-		52B9AFEE19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9AFED19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift */; };
 		52B9AFF719C36ADE0039E5D7 /* TCPCommSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9AFF619C36ADE0039E5D7 /* TCPCommSocket.swift */; };
 		52B9AFF819C36AE90039E5D7 /* TCPCommSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9AFF619C36ADE0039E5D7 /* TCPCommSocket.swift */; };
 		52C05A9919C36BA400E5827D /* private_helpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 52C05A9719C36BA400E5827D /* private_helpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -138,7 +137,6 @@
 		52B9AFE019C36ABA0039E5D7 /* DeferredTCPSocketMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeferredTCPSocketMac.h; sourceTree = "<group>"; };
 		52B9AFE619C36ABA0039E5D7 /* DeferredTCPSocketMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeferredTCPSocketMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B9AFEC19C36ABA0039E5D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52B9AFED19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeferredTCPSocketMacTests.swift; sourceTree = "<group>"; };
 		52B9AFF619C36ADE0039E5D7 /* TCPCommSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPCommSocket.swift; sourceTree = "<group>"; };
 		52C05A9719C36BA400E5827D /* private_helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = private_helpers.h; sourceTree = "<group>"; };
 		52C05A9819C36BA400E5827D /* private_helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = private_helpers.m; sourceTree = "<group>"; };
@@ -275,7 +273,6 @@
 		52B9AFEA19C36ABA0039E5D7 /* DeferredTCPSocketMacTests */ = {
 			isa = PBXGroup;
 			children = (
-				52B9AFED19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift */,
 				69356D5419E587AB009F3238 /* TCPCommSocketTests.swift */,
 				69356D5C19E587D2009F3238 /* TCPAcceptSocketTests.swift */,
 				52B9AFEB19C36ABA0039E5D7 /* Supporting Files */,
@@ -611,7 +608,6 @@
 			files = (
 				69356D5519E587AB009F3238 /* TCPCommSocketTests.swift in Sources */,
 				69356D5D19E587D2009F3238 /* TCPAcceptSocketTests.swift in Sources */,
-				52B9AFEE19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
