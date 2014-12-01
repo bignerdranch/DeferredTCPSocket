@@ -139,8 +139,7 @@ class DeferredReadOperation: DeferredIOOperation {
         self.maxLength = maxLength
         super.init(queue: queue, source: source, timerSource: timerSource, timeout: timeout)
 
-//        queueSpecificKey = UnsafeMutablePointer(unsafeAddressOf(self))
-        queueSpecificKey = UnsafeMutablePointer.alloc(1)
+        queueSpecificKey = UnsafeMutablePointer(unsafeAddressOf(self))
         dispatch_queue_set_specific(queue, queueSpecificKey, queueSpecificKey, nil)
 //        println("queue_get_specific = \(dispatch_queue_get_specific(queue, queueSpecificKey))")
     }
