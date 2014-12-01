@@ -12,7 +12,6 @@
 		52B9AFB419C36A2B0039E5D7 /* DeferredTCPSocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9AFB319C36A2B0039E5D7 /* DeferredTCPSocketTests.swift */; };
 		52B9AFE119C36ABA0039E5D7 /* DeferredTCPSocketMac.h in Headers */ = {isa = PBXBuildFile; fileRef = 52B9AFE019C36ABA0039E5D7 /* DeferredTCPSocketMac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52B9AFE719C36ABA0039E5D7 /* DeferredTCPSocketMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B9AFDC19C36ABA0039E5D7 /* DeferredTCPSocketMac.framework */; };
-		52B9AFEE19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9AFED19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift */; };
 		52B9AFF719C36ADE0039E5D7 /* TCPCommSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9AFF619C36ADE0039E5D7 /* TCPCommSocket.swift */; };
 		52B9AFF819C36AE90039E5D7 /* TCPCommSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9AFF619C36ADE0039E5D7 /* TCPCommSocket.swift */; };
 		52C05A9919C36BA400E5827D /* private_helpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 52C05A9719C36BA400E5827D /* private_helpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,6 +32,10 @@
 		52C05BA319C728DF00E5827D /* WriteOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9919C728DF00E5827D /* WriteOperations.swift */; };
 		52C05C4219C7395F00E5827D /* Deferred.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BAD19C72B7100E5827D /* Deferred.framework */; };
 		52C05C4319C7395F00E5827D /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BBC19C72B7400E5827D /* Result.framework */; };
+		69356D5519E587AB009F3238 /* TCPCommSocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69356D5419E587AB009F3238 /* TCPCommSocketTests.swift */; };
+		69356D5D19E587D2009F3238 /* TCPAcceptSocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69356D5C19E587D2009F3238 /* TCPAcceptSocketTests.swift */; };
+		69356D6319E597F5009F3238 /* DeferredMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BB119C72B7100E5827D /* DeferredMac.framework */; };
+		69356D6719E597FB009F3238 /* ResultMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BC019C72B7400E5827D /* ResultMac.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,20 @@
 			remoteGlobalIDString = 52B9AF4519C35F5F0039E5D7;
 			remoteInfo = ResultMacTests;
 		};
+		691066FA19CA68AC00B6A335 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BA519C72B7100E5827D /* Deferred.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B9AF1819C35F110039E5D7;
+			remoteInfo = DeferredMac;
+		};
+		691066FC19CA68AC00B6A335 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52C05BB419C72B7400E5827D /* Result.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B9AF3A19C35F5F0039E5D7;
+			remoteInfo = ResultMac;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -120,7 +137,6 @@
 		52B9AFE019C36ABA0039E5D7 /* DeferredTCPSocketMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeferredTCPSocketMac.h; sourceTree = "<group>"; };
 		52B9AFE619C36ABA0039E5D7 /* DeferredTCPSocketMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeferredTCPSocketMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B9AFEC19C36ABA0039E5D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52B9AFED19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeferredTCPSocketMacTests.swift; sourceTree = "<group>"; };
 		52B9AFF619C36ADE0039E5D7 /* TCPCommSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPCommSocket.swift; sourceTree = "<group>"; };
 		52C05A9719C36BA400E5827D /* private_helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = private_helpers.h; sourceTree = "<group>"; };
 		52C05A9819C36BA400E5827D /* private_helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = private_helpers.m; sourceTree = "<group>"; };
@@ -132,6 +148,8 @@
 		52C05B9919C728DF00E5827D /* WriteOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteOperations.swift; sourceTree = "<group>"; };
 		52C05BA519C72B7100E5827D /* Deferred.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Deferred.xcodeproj; path = ../Deferred/Deferred.xcodeproj; sourceTree = "<group>"; };
 		52C05BB419C72B7400E5827D /* Result.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Result.xcodeproj; path = ../Result/Result.xcodeproj; sourceTree = "<group>"; };
+		69356D5419E587AB009F3238 /* TCPCommSocketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPCommSocketTests.swift; sourceTree = "<group>"; };
+		69356D5C19E587D2009F3238 /* TCPAcceptSocketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPAcceptSocketTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +174,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69356D6719E597FB009F3238 /* ResultMac.framework in Frameworks */,
+				69356D6319E597F5009F3238 /* DeferredMac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +273,8 @@
 		52B9AFEA19C36ABA0039E5D7 /* DeferredTCPSocketMacTests */ = {
 			isa = PBXGroup;
 			children = (
-				52B9AFED19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift */,
+				69356D5419E587AB009F3238 /* TCPCommSocketTests.swift */,
+				69356D5C19E587D2009F3238 /* TCPAcceptSocketTests.swift */,
 				52B9AFEB19C36ABA0039E5D7 /* Supporting Files */,
 			);
 			path = DeferredTCPSocketMacTests;
@@ -373,6 +394,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				691066FB19CA68AC00B6A335 /* PBXTargetDependency */,
+				691066FD19CA68AC00B6A335 /* PBXTargetDependency */,
 			);
 			name = DeferredTCPSocketMac;
 			productName = DeferredTCPSocketMac;
@@ -583,7 +606,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52B9AFEE19C36ABA0039E5D7 /* DeferredTCPSocketMacTests.swift in Sources */,
+				69356D5519E587AB009F3238 /* TCPCommSocketTests.swift in Sources */,
+				69356D5D19E587D2009F3238 /* TCPAcceptSocketTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +623,16 @@
 			isa = PBXTargetDependency;
 			target = 52B9AFDB19C36ABA0039E5D7 /* DeferredTCPSocketMac */;
 			targetProxy = 52B9AFE819C36ABA0039E5D7 /* PBXContainerItemProxy */;
+		};
+		691066FB19CA68AC00B6A335 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DeferredMac;
+			targetProxy = 691066FA19CA68AC00B6A335 /* PBXContainerItemProxy */;
+		};
+		691066FD19CA68AC00B6A335 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ResultMac;
+			targetProxy = 691066FC19CA68AC00B6A335 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
