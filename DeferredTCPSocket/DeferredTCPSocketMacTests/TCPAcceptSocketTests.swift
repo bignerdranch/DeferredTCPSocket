@@ -51,14 +51,24 @@ class TCPAcceptSocketTests: XCTestCase {
     }
     
     func testAccept_portZero() {
+        let connExpectation = expectationWithDescription("accepted on a random port")
         let connHandler = TCPAcceptSocket.ConnectionHandler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), callback: { commSocket in
-            // do-nothing
+            connExpectation.fulfill()
         })
         
         let result = TCPAcceptSocket.accept(onPort: 0, withConnectionHandler: connHandler)
         XCTAssertNotNil(result.successValue, "Should have a success value")
-        // TODO: This works, but it should give us some way to know what port it used; man getsockname
+
         if let acceptSocket = result.successValue {
+            // make sure we got a non-zero port
+            XCTAssertNotEqual(acceptSocket.port, UInt16(0))
+
+            // connect to make sure the port is correct
+            let client = TCPCommSocket.connectToHost("localhost", serviceOrPort: String(acceptSocket.port))
+            let clientResult = client.value
+            XCTAssertNotNil(clientResult.successValue)
+
+            waitForExpectationsWithTimeout(3.0, nil)
             acceptSocket.close()
         }
     }

@@ -33,7 +33,7 @@ public struct LibCError: ErrorType {
 public class TCPAcceptSocket {
     public typealias ConnectionHandler = (queue: dispatch_queue_t, callback: (TCPCommSocket) -> ())
 
-    public class func accept(onPort port: UInt16, withConnectionHandler: ConnectionHandler) -> Result<TCPAcceptSocket> {
+    public class func accept(var onPort port: UInt16, withConnectionHandler: ConnectionHandler) -> Result<TCPAcceptSocket> {
         let fd = socket(AF_INET, SOCK_STREAM, 0)
         if fd < 0 {
             return .Failure(LibCError(functionName: "socket", errno: errno))
@@ -76,8 +76,28 @@ public class TCPAcceptSocket {
             return cleanupWithError("listen")
         }
 
+        // if we're called with port 0, we just started listening on a random port.
+        // get it so the caller can find out what it is.
+        if port == 0 {
+            var sockname: sockaddr = sockaddr(sa_len: 0, sa_family: 0, sa_data: (0,0,0,0,0,0,0,0,0,0,0,0,0,0))
+            var sockname_len: socklen_t = socklen_t(sizeof(sockname.dynamicType))
+            if getsockname(fd, &sockname, &sockname_len) != 0 {
+                return cleanupWithError("getsockname")
+            }
+            switch Int32(sockname.sa_family) {
+            case AF_INET:
+                port = withUnsafePointer(&sockname, { sockname_ptr in
+                    let sockname_in = UnsafePointer<sockaddr_in>(sockname_ptr)
+                    return UInt16(bigEndian: sockname_in.memory.sin_port)
+                })
+
+            default:
+                return cleanupWithError("getsockname: unknown sa_family")
+            }
+        }
+
         freeaddrinfo(addr)
-        let sock = TCPAcceptSocket(fd: fd, withConnectionHandler: withConnectionHandler)
+        let sock = TCPAcceptSocket(fd: fd, port: port, withConnectionHandler: withConnectionHandler)
         return .Success(sock)
     }
 
@@ -85,10 +105,13 @@ public class TCPAcceptSocket {
     private let queue = dispatch_queue_create("TCPAcceptSocket", DISPATCH_QUEUE_SERIAL)
     private let connHandler: ConnectionHandler
 
-    private init(fd: Int32, withConnectionHandler connHandler: ConnectionHandler) {
-        NSLog("accepting on \(fd)")
+    public let port: UInt16
+
+    private init(fd: Int32, port: UInt16, withConnectionHandler connHandler: ConnectionHandler) {
+        NSLog("accepting on port \(port), fd \(fd)")
         self.source = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(fd), 0, queue)
         self.connHandler = connHandler
+        self.port = port
 
         dispatch_source_set_event_handler(source) { [weak self] in
             self?.handlePendingAccept()
