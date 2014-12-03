@@ -71,5 +71,5 @@ public class DeferredReader: ReadOperationDelegate {
     }
 
     //MARK: ReadOperationDelegate
-    var bufferedData: dispatch_data_t = get_dispatch_data_empty()
+    var bufferedData: dispatch_data_t = dispatch_data_empty
 }

@@ -9,5 +9,3 @@
 #import <Foundation/Foundation.h>
 
 int fcntl_set_O_NONBLOCK(int fd);
-
-dispatch_data_t get_dispatch_data_empty();

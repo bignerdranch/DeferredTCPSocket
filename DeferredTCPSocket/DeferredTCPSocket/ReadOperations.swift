@@ -124,7 +124,7 @@ class DeferredReadOperation: DeferredIOOperation {
     override var finished: Bool { return deferred.isFilled }
 
     private let maxLength: UInt
-    private var data: dispatch_data_t = get_dispatch_data_empty()
+    private var data: dispatch_data_t = dispatch_data_empty
 
     // TODO: make sure this works now
     // really want the delegate to have this type, but crashes in beta5
@@ -199,7 +199,7 @@ class DeferredReadOperation: DeferredIOOperation {
             return
         }
 
-        seedWithInitialData(delegate?.bufferedData ?? get_dispatch_data_empty())
+        seedWithInitialData(delegate?.bufferedData ?? dispatch_data_empty)
 
         if !finished {
             executing = true
@@ -262,7 +262,7 @@ class ReadLengthOperation: DeferredReadOperation {
             // TODO: We have to make a local instance to avoid capturing self in the Result @auto_closure.
             // Remove this and confirm that we don't have a retain cycle once Result holds just T (no auto_closure).
             let localData = self.data
-            completeWithSuccess(localData as NSData, withBufferedData: get_dispatch_data_empty())
+            completeWithSuccess(localData as NSData, withBufferedData: dispatch_data_empty)
         }
     }
 }
@@ -286,7 +286,7 @@ class ReadDelimiterOperation: DeferredReadOperation {
             (toSearch, pastSearchRange) = dispatch_data_split(initialData, atIndex: maxLength)
         } else {
             toSearch = initialData
-            pastSearchRange = get_dispatch_data_empty()
+            pastSearchRange = dispatch_data_empty
         }
 
         let (ours, remaining) = dispatch_data_split(toSearch, delimiter: delimiter)
