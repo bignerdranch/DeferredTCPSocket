@@ -118,7 +118,12 @@ operations are being cancelled prematurely, make sure you are retaining the
 
 Add this repository as a submodule, or use [Carthage](https://github.com/Carthage/Carthage/).
 
-Note that this repository includes two other repos as submodules.
+Note that this repository includes two other repos as submodules; the easiest way
+to manage this is, after adding this module as a submodule, use:
+
+`
+git submodule update --init --recursive
+`
 
 ## Author
 
