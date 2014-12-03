@@ -9,12 +9,8 @@
 import Foundation
 #if os(iOS)
 import Result
-//import Deferred
-//import DeferredIO
 #else
 import ResultMac
-//import DeferredMac
-//import DeferredIOMac
 #endif
 
 private func socklen_of<T>(x: T) -> socklen_t {

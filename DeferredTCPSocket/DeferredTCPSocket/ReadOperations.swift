@@ -115,10 +115,6 @@ protocol ReadOperationDelegate : class {
 }
 
 class DeferredReadOperation: DeferredIOOperation {
-    // TODO: no idea why this _deferred/deferred dance is necessary, but
-    // without it, accessing .deferred from DeferredReader crashes in beta4
-//    let _deferred: Deferred<ReadResult> = Deferred<ReadResult>()
-//    var deferred: Deferred<ReadResult> { return _deferred }
     let deferred = Deferred<ReadResult>()
 
     override var finished: Bool { return deferred.isFilled }
@@ -126,12 +122,8 @@ class DeferredReadOperation: DeferredIOOperation {
     private let maxLength: UInt
     private var data: dispatch_data_t = dispatch_data_empty
 
-    // TODO: make sure this works now
-    // really want the delegate to have this type, but crashes in beta5
     private weak var delegate: ReadOperationDelegate?
-//    private let delegate: ReadOperationDelegate
 
-//    private let queueSpecificKey = UnsafeMutablePointer<()>.alloc(0)
     private let queueSpecificKey: UnsafeMutablePointer<Void> = nil
 
     init(delegate: ReadOperationDelegate, queue: dispatch_queue_t, source: dispatch_source_t, timerSource: dispatch_source_t, maxLength: UInt, timeout: NSTimeInterval? = nil) {
@@ -141,12 +133,6 @@ class DeferredReadOperation: DeferredIOOperation {
 
         queueSpecificKey = UnsafeMutablePointer(unsafeAddressOf(self))
         dispatch_queue_set_specific(queue, queueSpecificKey, queueSpecificKey, nil)
-//        println("queue_get_specific = \(dispatch_queue_get_specific(queue, queueSpecificKey))")
-    }
-
-    deinit {
-//        NSLog("DEINIT \(self)")
-//        queueSpecificKey.dealloc(0)
     }
 
     override func cancel() {
