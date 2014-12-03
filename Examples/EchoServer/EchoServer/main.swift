@@ -42,7 +42,7 @@ func echo(sock: TCPCommSocket) {
     }
 }
 
-let echoHandler: TCPAcceptSocket.ConnectionHandler = (dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), echo)
+let echoHandler = (dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)!, echo)
 let accepterResult = TCPAcceptSocket.accept(onPort: ECHO_PORT, withConnectionHandler: echoHandler)
 
 switch accepterResult {
