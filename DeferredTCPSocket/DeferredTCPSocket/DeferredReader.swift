@@ -13,7 +13,7 @@ import Deferred
 import DeferredMac
 #endif
 
-public class DeferredReader: ReadOperationDelegate {
+public final class DeferredReader: ReadOperationDelegate {
     private let queue = dispatch_queue_create("DeferredReader", DISPATCH_QUEUE_SERIAL)
     private let source: dispatch_source_t
     private let timerSource: dispatch_source_t

@@ -16,7 +16,7 @@ import DeferredMac
 import ResultMac
 #endif
 
-public class TCPCommSocket {
+public final class TCPCommSocket {
     private let reader: DeferredReader
     private let writer: DeferredWriter
 

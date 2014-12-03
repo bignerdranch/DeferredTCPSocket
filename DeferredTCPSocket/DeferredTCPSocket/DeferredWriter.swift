@@ -13,7 +13,7 @@ import Deferred
 import DeferredMac
 #endif
 
-public class DeferredWriter {
+public final class DeferredWriter {
     private let queue = dispatch_queue_create("DeferredWriter", DISPATCH_QUEUE_SERIAL)
     private let source: dispatch_source_t
     private let timerSource: dispatch_source_t

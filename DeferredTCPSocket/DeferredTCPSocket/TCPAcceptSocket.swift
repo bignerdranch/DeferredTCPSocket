@@ -26,7 +26,7 @@ public struct LibCError: ErrorType {
     }
 }
 
-public class TCPAcceptSocket {
+public final class TCPAcceptSocket {
     public typealias ConnectionHandler = (queue: dispatch_queue_t, callback: (TCPCommSocket) -> ())
 
     public class func accept(var onPort port: UInt16, withConnectionHandler: ConnectionHandler) -> Result<TCPAcceptSocket> {
