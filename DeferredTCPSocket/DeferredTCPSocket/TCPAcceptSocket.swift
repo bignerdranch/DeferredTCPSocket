@@ -32,7 +32,7 @@ public final class TCPAcceptSocket {
     public class func accept(var onPort port: UInt16, withConnectionHandler: ConnectionHandler) -> Result<TCPAcceptSocket> {
         let fd = socket(AF_INET, SOCK_STREAM, 0)
         if fd < 0 {
-            return .Failure(LibCError(functionName: "socket", errno: errno))
+            return Result(failure: LibCError(functionName: "socket", errno: errno))
         }
 
         var addr: UnsafeMutablePointer<addrinfo> = nil
@@ -43,7 +43,7 @@ public final class TCPAcceptSocket {
             if addr != nil {
                 freeaddrinfo(addr)
             }
-            return .Failure(LibCError(functionName: functionName, errno: e))
+            return Result(failure: LibCError(functionName: functionName, errno: e))
         }
 
         var reuseAddr = 1
@@ -94,7 +94,7 @@ public final class TCPAcceptSocket {
 
         freeaddrinfo(addr)
         let sock = TCPAcceptSocket(fd: fd, port: port, withConnectionHandler: withConnectionHandler)
-        return .Success(sock)
+        return Result(success: sock)
     }
 
     private let source: dispatch_source_t

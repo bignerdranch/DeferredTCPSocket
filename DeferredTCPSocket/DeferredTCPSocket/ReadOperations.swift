@@ -147,10 +147,10 @@ class DeferredReadOperation: DeferredIOOperation {
     }
 
     func completeWithFailure(failure: ReadError, withBufferedData: dispatch_data_t) {
-        complete(.Failure(failure), withBufferedData: withBufferedData)
+        complete(Result(failure: failure), withBufferedData: withBufferedData)
     }
     func completeWithSuccess(success: NSData, withBufferedData: dispatch_data_t) {
-        complete(.Success(success), withBufferedData: withBufferedData)
+        complete(Result(success: success), withBufferedData: withBufferedData)
     }
     func complete(result: ReadResult, withBufferedData: dispatch_data_t) {
         assert(dispatch_get_specific(queueSpecificKey) == queueSpecificKey, "complete called on incorrect queue")

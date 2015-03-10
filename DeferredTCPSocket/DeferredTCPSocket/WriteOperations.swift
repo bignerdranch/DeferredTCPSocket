@@ -63,14 +63,14 @@ class DeferredWriteOperation: DeferredIOOperation {
         dispatch_async(queue) { [weak self] in
             if let s = self {
                 if s.executing {
-                    s.complete(.Failure(WriteError.Cancelled))
+                    s.complete(Result(failure: WriteError.Cancelled))
                 }
             }
         }
     }
 
     override func handleTimeout() {
-        complete(.Failure(WriteError.Timeout))
+        complete(Result(failure: WriteError.Timeout))
     }
 
     override func start() {
@@ -81,7 +81,7 @@ class DeferredWriteOperation: DeferredIOOperation {
 
     private func realStart() {
         if self.cancelled {
-            complete(.Failure(WriteError.Cancelled))
+            complete(Result(failure: WriteError.Cancelled))
             return
         }
 
@@ -101,10 +101,10 @@ class DeferredWriteOperation: DeferredIOOperation {
         if actualWritten > 0 {
             written += actualWritten
             if written == data.length {
-                complete(.Success(()))
+                complete(Result(success: ()))
             }
         } else {
-            complete(.Failure(WriteError.WriteFailedWithErrno(errno)))
+            complete(Result(failure: WriteError.WriteFailedWithErrno(errno)))
         }
     }
 }

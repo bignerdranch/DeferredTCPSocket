@@ -35,7 +35,7 @@ public final class TCPCommSocket {
                 if sockfd > 0 {
                     Darwin.close(sockfd)
                 }
-                deferred.fill(.Failure(LibCError(functionName: functionName, errno: e)))
+                deferred.fill(Result(failure: LibCError(functionName: functionName, errno: e)))
             }
 
             var hints = addrinfo(
@@ -62,7 +62,7 @@ public final class TCPCommSocket {
 
             // success!
             let commSocket = TCPCommSocket(fd: sockfd)
-            deferred.fill(.Success(commSocket))
+            deferred.fill(Result(success: commSocket))
             freeaddrinfo(addr)
         }
 
