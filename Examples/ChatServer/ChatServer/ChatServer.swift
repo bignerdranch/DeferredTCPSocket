@@ -23,7 +23,7 @@ extension TCPCommSocket {
 
             readResult.bind { data in
                 if let utf8String = NSString(data: data, encoding: NSUTF8StringEncoding) {
-                    return .Success(utf8String)
+                    return Result(success: utf8String)
                 } else {
                     NSLog("Received non-UTF8 data; ignoring command")
                     return .Failure(InvalidCommandError())
@@ -55,7 +55,7 @@ class ChatServer {
         sock.readStringToCommandDelimiter().uponQueue(queue) { result in
             switch result.bind(HandshakeParser) {
             case let .Success(handshake):
-                let client = Client(sock: sock, username: handshake().username)
+                let client = Client(sock: sock, username: handshake.value.username)
                 self.addNewClient(client)
 
             case let .Failure(error):
@@ -90,7 +90,7 @@ class ChatServer {
         client.sock.readStringToCommandDelimiter().uponQueue(queue) { result in
             switch result.bind(CommandParser) {
             case let .Success(command):
-                self.handleCommand(command(), fromClient: client)
+                self.handleCommand(command.value, fromClient: client)
                 self.readCommandFromClient(client)
 
             case let .Failure(error):

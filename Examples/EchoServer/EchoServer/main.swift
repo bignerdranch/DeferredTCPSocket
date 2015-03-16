@@ -26,7 +26,7 @@ func echo(sock: TCPCommSocket) {
     sock.readDataWithTimeout(5).upon { result in
         switch result {
         case let .Success(data):
-            sock.writeData(data())
+            sock.writeData(data.value)
             echo(sock)
 
         case let .Failure(error):

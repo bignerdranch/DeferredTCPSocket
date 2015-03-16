@@ -22,7 +22,7 @@ private extension TCPCommSocket {
 
             readResult.bind { data in
                 if let utf8String = NSString(data: data, encoding: NSUTF8StringEncoding) {
-                    return .Success(utf8String)
+                    return Result(success: utf8String)
                 } else {
                     NSLog("Received non-UTF8 data; ignoring message")
                     return .Failure(InvalidMessageError())
@@ -53,7 +53,7 @@ class ChatConnection {
                     messageResult.bind { message in
                         switch message {
                         case .Connect:
-                            return .Success(connection)
+                            return Result(success: connection)
 
                         case .Disconnect, .Emote, .Message:
                             return .Failure(ServerError(description: "Unexpected handshake response from server"))

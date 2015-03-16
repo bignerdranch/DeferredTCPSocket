@@ -32,7 +32,7 @@ func startsWithReturningIndex<C: CollectionType, S: SequenceType where C.Generat
 func resultToDeferred<T,U>(r: Result<T>, f: T -> Deferred<Result<U>>) -> Deferred<Result<U>> {
     switch r {
     case let .Success(value):
-        return f(value())
+        return f(value.value)
 
     case let .Failure(error):
         return Deferred(value: .Failure(error))

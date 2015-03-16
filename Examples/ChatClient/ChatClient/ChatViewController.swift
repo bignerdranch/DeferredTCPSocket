@@ -86,7 +86,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
     private func handleReadMessageResult(result: Result<Message>) {
         switch result {
         case let .Success(message):
-            tableView.insertRowsAtIndexPaths([ messageDataSource.addMessage(message()) ],
+            tableView.insertRowsAtIndexPaths([ messageDataSource.addMessage(message.value) ],
                 withRowAnimation: .Automatic)
             readMessage()
 

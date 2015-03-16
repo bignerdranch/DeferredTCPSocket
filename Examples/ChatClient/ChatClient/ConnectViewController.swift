@@ -77,7 +77,7 @@ class ConnectViewController: UIViewController, UITextFieldDelegate {
 
             switch result {
             case let .Success(connection):
-                self.presentChatViewControllerWithConnection(connection(), name: name)
+                self.presentChatViewControllerWithConnection(connection.value, name: name)
                 self.userDefaults.host = host
                 self.userDefaults.username = name
 

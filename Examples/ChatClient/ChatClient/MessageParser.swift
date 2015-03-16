@@ -49,7 +49,7 @@ private func createParser<T>(prefix: String, toResult: String -> Result<T>) -> S
 private func parseUsernameAndContents(input: String) -> Result<(username: String, contents: String)> {
     let splitInput = split(input, { $0 == ":" }, maxSplit: 1, allowEmptySlices: false)
     if splitInput.count == 2 {
-        return .Success((username: splitInput[0], contents: splitInput[1]))
+        return Result(success: (username: splitInput[0], contents: splitInput[1]))
     } else {
         return .Failure(InvalidMessageError())
     }
@@ -61,8 +61,8 @@ private let MessageParsers: [String -> Result<Message>?] = [
     // message types first.
     createParser("m:", { parseUsernameAndContents($0).map { .Message($0) } }),
     createParser("e:", { parseUsernameAndContents($0).map { .Emote($0) } }),
-    createParser("c:", { username in .Success(.Connect(username)) }),
-    createParser("d:", { username in .Success(.Disconnect(username)) }),
+    createParser("c:", { username in Result(success: .Connect(username)) }),
+    createParser("d:", { username in Result(success: .Disconnect(username)) }),
     createParser("x:", { error in .Failure(ServerError(description: error)) }),
 ]
 

@@ -44,7 +44,7 @@ private func createParser<T>(prefix: String, toResult: String -> T) -> String ->
                 return .Failure(InvalidCommandError())
             } else {
                 let result = toResult(contents)
-                return .Success(result)
+                return Result(success: result)
             }
         } else {
             return .Failure(InvalidCommandError())
