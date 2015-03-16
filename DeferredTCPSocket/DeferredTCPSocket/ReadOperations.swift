@@ -50,7 +50,7 @@ public func ==(lhs: ReadError, rhs: ReadError) -> Bool {
 public typealias ReadResult = Result<NSData>
 
 // Split a dispatch_data into two pieces at the given index (which must be in the range [0, size_of_data]).
-private func dispatch_data_split(data: dispatch_data_t, #atIndex: UInt) -> (dispatch_data_t, dispatch_data_t) {
+private func dispatch_data_split(data: dispatch_data_t, #atIndex: Int) -> (dispatch_data_t, dispatch_data_t) {
     let size = dispatch_data_get_size(data)
     assert(atIndex <= size, "invalid data split requested")
 
@@ -73,13 +73,13 @@ private func dispatch_data_split(data: dispatch_data_t, #atIndex: UInt) -> (disp
 *          If the delimiter is found, returns (before_delimiter, after_delimiter) - the delimiter
 *          is not contained in either side.
 */
-private func dispatch_data_split(data: dispatch_data_t, #delimiter: dispatch_data_t, offset: UInt = 0) -> (dispatch_data_t?, dispatch_data_t) {
+private func dispatch_data_split(data: dispatch_data_t, #delimiter: dispatch_data_t, offset: Int = 0) -> (dispatch_data_t?, dispatch_data_t) {
     if dispatch_data_get_size(data) < offset + dispatch_data_get_size(delimiter) {
         return (nil, data)
     }
 
-    var rawDataPointer = UnsafePointer<()>.null()
-    var dataSize: UInt = 0
+    var rawDataPointer = UnsafePointer<Void>(nil)
+    var dataSize: Int = 0
 
     // We'll use withExtendedLifetime to force keeping the returned, mapped data objects
     // around for the duration of our use of the pointers we get back (rawDataPointer and
@@ -88,8 +88,8 @@ private func dispatch_data_split(data: dispatch_data_t, #delimiter: dispatch_dat
     return withExtendedLifetime(dispatch_data_create_map(data, &rawDataPointer, &dataSize)) {
         (contiguousData: dispatch_data_t) in
 
-        var rawDelimiterPointer = UnsafePointer<()>.null()
-        var delimiterSize: UInt = 0
+        var rawDelimiterPointer = UnsafePointer<Void>(nil)
+        var delimiterSize: Int = 0
 
         return withExtendedLifetime(dispatch_data_create_map(delimiter, &rawDelimiterPointer, &delimiterSize)) {
             var buffer = advance(UnsafePointer<UInt8>(rawDataPointer), Int(offset))
@@ -119,19 +119,20 @@ class DeferredReadOperation: DeferredIOOperation {
 
     override var finished: Bool { return deferred.isFilled }
 
-    private let maxLength: UInt
+    private let maxLength: Int
     private var data: dispatch_data_t = dispatch_data_empty
 
     private weak var delegate: ReadOperationDelegate?
 
-    private let queueSpecificKey: UnsafeMutablePointer<Void> = nil
+    private var queueSpecificKey: UnsafeMutablePointer<Void> {
+        return UnsafeMutablePointer(unsafeAddressOf(self))
+    }
 
-    init(delegate: ReadOperationDelegate, queue: dispatch_queue_t, source: dispatch_source_t, timerSource: dispatch_source_t, maxLength: UInt, timeout: NSTimeInterval? = nil) {
+    init(delegate: ReadOperationDelegate, queue: dispatch_queue_t, source: dispatch_source_t, timerSource: dispatch_source_t, maxLength: Int, timeout: NSTimeInterval? = nil) {
         self.delegate = delegate
         self.maxLength = maxLength
         super.init(queue: queue, source: source, timerSource: timerSource, timeout: timeout)
 
-        queueSpecificKey = UnsafeMutablePointer(unsafeAddressOf(self))
         dispatch_queue_set_specific(queue, queueSpecificKey, queueSpecificKey, nil)
     }
 
@@ -200,7 +201,7 @@ class DeferredReadOperation: DeferredIOOperation {
     func readFromSource() -> Bool {
         assert(dispatch_get_specific(queueSpecificKey) == queueSpecificKey, "complete called on incorrect queue")
         let wanted = maxLength - dispatch_data_get_size(data)
-        let available = dispatch_source_get_data(source)
+        let available = Int(dispatch_source_get_data(source))
         let fd = Int32(dispatch_source_get_handle(source))
         let amountToRead = min(available, wanted)
 
@@ -208,7 +209,7 @@ class DeferredReadOperation: DeferredIOOperation {
         let actualRead = read(fd, buf, amountToRead)
 
         if actualRead > 0 {
-            let newData = dispatch_data_create(buf, UInt(actualRead), nil, _dispatch_data_destructor_free)
+            let newData = dispatch_data_create(buf, actualRead, nil, _dispatch_data_destructor_free)
             data = dispatch_data_create_concat(data, newData)
             return true
         } else {
@@ -225,10 +226,10 @@ class DeferredReadOperation: DeferredIOOperation {
 }
 
 class ReadLengthOperation: DeferredReadOperation {
-    private let minLength: UInt
+    private let minLength: Int
     private var isDataComplete: Bool { return dispatch_data_get_size(data) >= minLength }
 
-    init(delegate: ReadOperationDelegate, queue: dispatch_queue_t, source: dispatch_source_t, timerSource: dispatch_source_t, minLength: UInt, maxLength: UInt = UInt.max, timeout: NSTimeInterval? = nil) {
+    init(delegate: ReadOperationDelegate, queue: dispatch_queue_t, source: dispatch_source_t, timerSource: dispatch_source_t, minLength: Int, maxLength: Int = Int.max, timeout: NSTimeInterval? = nil) {
         assert(maxLength >= minLength, "invalid read operation")
         self.minLength = minLength
         super.init(delegate: delegate, queue: queue, source: source, timerSource: timerSource, maxLength: maxLength, timeout: timeout)
@@ -239,7 +240,7 @@ class ReadLengthOperation: DeferredReadOperation {
         if isDataComplete {
             let size = dispatch_data_get_size(data)
             let (ours, remaining) = dispatch_data_split(data, atIndex: min(size, maxLength))
-            completeWithSuccess(ours as NSData, withBufferedData: remaining)
+            completeWithSuccess(ours as! NSData, withBufferedData: remaining)
         }
     }
 
@@ -248,18 +249,18 @@ class ReadLengthOperation: DeferredReadOperation {
             // TODO: We have to make a local instance to avoid capturing self in the Result @auto_closure.
             // Remove this and confirm that we don't have a retain cycle once Result holds just T (no auto_closure).
             let localData = self.data
-            completeWithSuccess(localData as NSData, withBufferedData: dispatch_data_empty)
+            completeWithSuccess(localData as! NSData, withBufferedData: dispatch_data_empty)
         }
     }
 }
 
 class ReadDelimiterOperation: DeferredReadOperation {
     private let delimiter: dispatch_data_t
-    private let delimiterSize: UInt
-    private var offset: UInt = 0
+    private let delimiterSize: Int
+    private var offset: Int = 0
 
-    init(delegate: ReadOperationDelegate, queue: dispatch_queue_t, source: dispatch_source_t, timerSource: dispatch_source_t, delimiter: NSData, maxLength: UInt = UInt.max, timeout: NSTimeInterval? = nil) {
-        self.delimiterSize = UInt(delimiter.length)
+    init(delegate: ReadOperationDelegate, queue: dispatch_queue_t, source: dispatch_source_t, timerSource: dispatch_source_t, delimiter: NSData, maxLength: Int = Int.max, timeout: NSTimeInterval? = nil) {
+        self.delimiterSize = delimiter.length
         self.delimiter = dispatch_data_create(delimiter.bytes, delimiterSize, nil, nil)
         super.init(delegate: delegate, queue: queue, source: source, timerSource: timerSource, maxLength: maxLength, timeout: timeout)
     }
@@ -278,7 +279,7 @@ class ReadDelimiterOperation: DeferredReadOperation {
         let (ours, remaining) = dispatch_data_split(toSearch, delimiter: delimiter)
 //        NSLog("initial data split result: (\(ours), \(remaining))")
         if let ours = ours {
-            completeWithSuccess(ours as NSData, withBufferedData: dispatch_data_create_concat(remaining, pastSearchRange))
+            completeWithSuccess(ours as! NSData, withBufferedData: dispatch_data_create_concat(remaining, pastSearchRange))
             return
         }
 
@@ -305,7 +306,7 @@ class ReadDelimiterOperation: DeferredReadOperation {
         let (ours, remaining) = dispatch_data_split(data, delimiter: delimiter, offset: offset)
 //        NSLog("split result: (\(ours), \(remaining))")
         if let ours = ours {
-            completeWithSuccess(ours as NSData, withBufferedData: remaining)
+            completeWithSuccess(ours as! NSData, withBufferedData: remaining)
             return
         }
 

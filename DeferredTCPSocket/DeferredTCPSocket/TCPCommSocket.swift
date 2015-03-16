@@ -107,11 +107,11 @@ public final class TCPCommSocket {
         return reader.readDataWithTimeout(timeout)
     }
 
-    public func readDataToLength(length: UInt, withTimeout timeout: NSTimeInterval? = nil) -> Deferred<ReadResult> {
+    public func readDataToLength(length: Int, withTimeout timeout: NSTimeInterval? = nil) -> Deferred<ReadResult> {
         return reader.readDataToLength(length, withTimeout: timeout)
     }
 
-    public func readDataToDelimiter(delimiter: NSData, maxLength: UInt = UInt.max, withTimeout timeout: NSTimeInterval? = nil) -> Deferred<ReadResult> {
+    public func readDataToDelimiter(delimiter: NSData, maxLength: Int = Int.max, withTimeout timeout: NSTimeInterval? = nil) -> Deferred<ReadResult> {
         return reader.readDataToDelimiter(delimiter, maxLength: maxLength, withTimeout: timeout)
     }
 

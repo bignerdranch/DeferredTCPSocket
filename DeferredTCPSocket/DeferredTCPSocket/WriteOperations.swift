@@ -96,7 +96,7 @@ class DeferredWriteOperation: DeferredIOOperation {
         let fd = Int32(dispatch_source_get_handle(source))
         let remaining = data.length - written
 
-        let actualWritten = write(fd, advance(data.bytes, written), UInt(remaining))
+        let actualWritten = write(fd, advance(data.bytes, written), remaining)
 
         if actualWritten > 0 {
             written += actualWritten

@@ -57,11 +57,11 @@ public final class DeferredReader: ReadOperationDelegate {
         return enqueueOperation(ReadLengthOperation(delegate: self, queue: queue, source: source, timerSource: timerSource, minLength: 1, timeout: timeout))
     }
 
-    public func readDataToLength(length: UInt, withTimeout timeout: NSTimeInterval? = nil) -> Deferred<ReadResult> {
+    public func readDataToLength(length: Int, withTimeout timeout: NSTimeInterval? = nil) -> Deferred<ReadResult> {
         return enqueueOperation(ReadLengthOperation(delegate: self, queue: queue, source: source, timerSource: timerSource, minLength: length, maxLength: length, timeout: timeout))
     }
 
-    public func readDataToDelimiter(delimiter: NSData, maxLength: UInt = UInt.max, withTimeout timeout: NSTimeInterval? = nil) -> Deferred<ReadResult> {
+    public func readDataToDelimiter(delimiter: NSData, maxLength: Int = Int.max, withTimeout timeout: NSTimeInterval? = nil) -> Deferred<ReadResult> {
         return enqueueOperation(ReadDelimiterOperation(delegate: self, queue: queue, source: source, timerSource: timerSource, delimiter: delimiter, maxLength: maxLength, timeout: timeout))
     }
 
