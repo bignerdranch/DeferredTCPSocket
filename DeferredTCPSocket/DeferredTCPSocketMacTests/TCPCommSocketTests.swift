@@ -9,8 +9,8 @@
 import Cocoa
 import XCTest
 import DeferredTCPSocketMac
-import DeferredMac
-import ResultMac
+import Deferred
+import Swiftz
 
 class TCPCommSocketTests: XCTestCase {
 
@@ -44,18 +44,20 @@ class TCPCommSocketTests: XCTestCase {
         // expect a Deferred to be filled with .Success(TCPCommSocket)
         let deferredResultSocket = TCPCommSocket.connectToHost("localhost", serviceOrPort: String(port))
         deferredResultSocket.upon({
-            (resultSocket : Result<TCPCommSocket>) in
-            if let socket = resultSocket.successValue {
+            (resultSocket : Either<ErrorType, TCPCommSocket>) in
+            if let socket = resultSocket.right {
                 // wrap up the EOT char (0x04) as 1-byte NSData
-                let eotData = NSData(bytes: [4] as [CChar], length: 1)
-                socket.writeData(eotData)
+                let eotData: NSData = "ABCD".dataUsingEncoding(NSUTF8StringEncoding)!
+                socket.writeData(eotData).upon(dispatch_get_main_queue()) {
+                    XCTAssertNotNil($0.right, "Write should be successful")
+                    socket.close()
+                }
                 
                 // MARK: sleep here to make expectations fail
-//                sleep(5)
+                //sleep(5)
                 
-                socket.close()
             } else {
-                XCTFail("Could not connect: \(resultSocket.failureValue)")
+                XCTFail("Could not connect: \(resultSocket.left)")
                 netcat.terminate()
             }
             connectExpectation.fulfill()
@@ -63,9 +65,12 @@ class TCPCommSocketTests: XCTestCase {
         
         // wait for expectations
         waitForExpectationsWithTimeout(3, handler: nil)
-        
+
         // wait for netcat to finish
         netcat.waitUntilExit()
+        let data = outpipe.fileHandleForReading.readDataToEndOfFile()
+        XCTAssertEqual("ABCD", NSString(data:data, encoding: NSUTF8StringEncoding)!,
+            "Written should be equal to read")
         
         XCTAssertEqual(netcat.terminationStatus, Int32(0), "netcat should exit with success")
     }

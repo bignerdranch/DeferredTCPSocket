@@ -10,18 +10,18 @@ import Foundation
 import Darwin
 #if os(iOS)
 import Deferred
-import Result
+import Swiftz
 #else
-import DeferredMac
-import ResultMac
+import Deferred
+import Swiftz
 #endif
 
 public final class TCPCommSocket {
     private let reader: DeferredReader
     private let writer: DeferredWriter
 
-    public class func connectToHost(host: String, serviceOrPort: String) -> Deferred<Result<TCPCommSocket>> {
-        let deferred = Deferred<Result<TCPCommSocket>>()
+    public class func connectToHost(host: String, serviceOrPort: String) -> Deferred<Either<ErrorType,TCPCommSocket>> {
+        let deferred = Deferred<Either<ErrorType, TCPCommSocket>>()
 
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             var addr: UnsafeMutablePointer<addrinfo> = nil
@@ -35,7 +35,7 @@ public final class TCPCommSocket {
                 if sockfd > 0 {
                     Darwin.close(sockfd)
                 }
-                deferred.fill(Result(failure: LibCError(functionName: functionName, errno: e)))
+                deferred.fill(.Left(LibCError(functionName: functionName, errno: e)))
             }
 
             var hints = addrinfo(
@@ -62,7 +62,7 @@ public final class TCPCommSocket {
 
             // success!
             let commSocket = TCPCommSocket(fd: sockfd)
-            deferred.fill(Result(success: commSocket))
+            deferred.fill(.Right(commSocket))
             freeaddrinfo(addr)
         }
 
@@ -90,13 +90,13 @@ public final class TCPCommSocket {
     }
 
     deinit {
-//        NSLog("DEINIT \(self)")
-        close()
+        //        NSLog("DEINIT \(self)")
+        close(false)
     }
 
-    public func close() {
-        reader.close()
-        writer.close()
+    public func close(force: Bool = true) {
+        reader.close(force)
+        writer.close(force)
     }
 
     public func readData() -> Deferred<ReadResult> {

@@ -9,10 +9,10 @@
 import Foundation
 #if os(iOS)
 import Deferred
-import Result
+import Swiftz
 #else
-import DeferredMac
-import ResultMac
+import Deferred
+import Swiftz
 #endif
 
 public enum WriteError: ErrorType {
@@ -29,7 +29,7 @@ public enum WriteError: ErrorType {
     }
 }
 
-public typealias WriteResult = Result<Void>
+public typealias WriteResult = Either<WriteError, Void>
 
 class DeferredWriteOperation: DeferredIOOperation {
     let deferred = Deferred<WriteResult>()
@@ -63,14 +63,14 @@ class DeferredWriteOperation: DeferredIOOperation {
         dispatch_async(queue) { [weak self] in
             if let s = self {
                 if s.executing {
-                    s.complete(Result(failure: WriteError.Cancelled))
+                    s.complete(.Left(WriteError.Cancelled))
                 }
             }
         }
     }
 
     override func handleTimeout() {
-        complete(Result(failure: WriteError.Timeout))
+        complete(.Left(WriteError.Timeout))
     }
 
     override func start() {
@@ -81,7 +81,7 @@ class DeferredWriteOperation: DeferredIOOperation {
 
     private func realStart() {
         if self.cancelled {
-            complete(Result(failure: WriteError.Cancelled))
+            complete(.Left(WriteError.Cancelled))
             return
         }
 
@@ -96,15 +96,15 @@ class DeferredWriteOperation: DeferredIOOperation {
         let fd = Int32(dispatch_source_get_handle(source))
         let remaining = data.length - written
 
-        let actualWritten = write(fd, advance(data.bytes, written), UInt(remaining))
+        let actualWritten = write(fd, data.bytes.advancedBy(written), remaining)
 
         if actualWritten > 0 {
             written += actualWritten
             if written == data.length {
-                complete(Result(success: ()))
+                complete(.Right(()))
             }
         } else {
-            complete(Result(failure: WriteError.WriteFailedWithErrno(errno)))
+            complete(.Left(WriteError.WriteFailedWithErrno(errno)))
         }
     }
 }

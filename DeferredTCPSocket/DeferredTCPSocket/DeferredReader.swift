@@ -10,7 +10,7 @@ import Foundation
 #if os(iOS)
 import Deferred
 #else
-import DeferredMac
+import Deferred
 #endif
 
 public final class DeferredReader: ReadOperationDelegate {
@@ -31,12 +31,14 @@ public final class DeferredReader: ReadOperationDelegate {
 
     deinit {
 //        NSLog("DEINIT: \(self)")
-        close()
+        close(false)
     }
 
-    public func close() {
+    public func close(force: Bool = true) {
         if !closed {
-            operationQueue.cancelAllOperations()
+            if force {
+                operationQueue.cancelAllOperations()
+            }
             operationQueue.waitUntilAllOperationsAreFinished()
 
             dispatch_source_cancel(source)
