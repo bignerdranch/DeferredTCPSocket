@@ -30,12 +30,12 @@
 		52C05BA119C728DF00E5827D /* ReadOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9819C728DF00E5827D /* ReadOperations.swift */; };
 		52C05BA219C728DF00E5827D /* WriteOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9919C728DF00E5827D /* WriteOperations.swift */; };
 		52C05BA319C728DF00E5827D /* WriteOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C05B9919C728DF00E5827D /* WriteOperations.swift */; };
-		52C05C4219C7395F00E5827D /* Deferred.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BAD19C72B7100E5827D /* Deferred.framework */; };
-		52C05C4319C7395F00E5827D /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BBC19C72B7400E5827D /* Result.framework */; };
 		69356D5519E587AB009F3238 /* TCPCommSocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69356D5419E587AB009F3238 /* TCPCommSocketTests.swift */; };
 		69356D5D19E587D2009F3238 /* TCPAcceptSocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69356D5C19E587D2009F3238 /* TCPAcceptSocketTests.swift */; };
-		69356D6319E597F5009F3238 /* DeferredMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BB119C72B7100E5827D /* DeferredMac.framework */; };
-		69356D6719E597FB009F3238 /* ResultMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C05BC019C72B7400E5827D /* ResultMac.framework */; };
+		A80C04731C4525BF0098B4DC /* Swiftz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A80C046E1C450CF40098B4DC /* Swiftz.framework */; };
+		A80C04741C4525C40098B4DC /* Deferred.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A80C046C1C450CE00098B4DC /* Deferred.framework */; };
+		A80C04751C45263C0098B4DC /* Swiftz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A80C046E1C450CF40098B4DC /* Swiftz.framework */; };
+		A80C04761C4526420098B4DC /* Deferred.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A80C046C1C450CE00098B4DC /* Deferred.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,76 +52,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 52B9AFDB19C36ABA0039E5D7;
 			remoteInfo = DeferredTCPSocketMac;
-		};
-		52C05BAC19C72B7100E5827D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52C05BA519C72B7100E5827D /* Deferred.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 523E00A1199915C600E07C3C;
-			remoteInfo = Deferred;
-		};
-		52C05BAE19C72B7100E5827D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52C05BA519C72B7100E5827D /* Deferred.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 523E00AC199915C600E07C3C;
-			remoteInfo = DeferredTests;
-		};
-		52C05BB019C72B7100E5827D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52C05BA519C72B7100E5827D /* Deferred.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 52B9AF1919C35F110039E5D7;
-			remoteInfo = DeferredMac;
-		};
-		52C05BB219C72B7100E5827D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52C05BA519C72B7100E5827D /* Deferred.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 52B9AF2319C35F110039E5D7;
-			remoteInfo = DeferredMacTests;
-		};
-		52C05BBB19C72B7400E5827D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52C05BB419C72B7400E5827D /* Result.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 52B9AE9B19C35B1D0039E5D7;
-			remoteInfo = Result;
-		};
-		52C05BBD19C72B7400E5827D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52C05BB419C72B7400E5827D /* Result.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 52B9AEA619C35B1D0039E5D7;
-			remoteInfo = ResultTests;
-		};
-		52C05BBF19C72B7400E5827D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52C05BB419C72B7400E5827D /* Result.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 52B9AF3B19C35F5F0039E5D7;
-			remoteInfo = ResultMac;
-		};
-		52C05BC119C72B7400E5827D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52C05BB419C72B7400E5827D /* Result.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 52B9AF4519C35F5F0039E5D7;
-			remoteInfo = ResultMacTests;
-		};
-		691066FA19CA68AC00B6A335 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52C05BA519C72B7100E5827D /* Deferred.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 52B9AF1819C35F110039E5D7;
-			remoteInfo = DeferredMac;
-		};
-		691066FC19CA68AC00B6A335 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52C05BB419C72B7400E5827D /* Result.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 52B9AF3A19C35F5F0039E5D7;
-			remoteInfo = ResultMac;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -146,10 +76,10 @@
 		52C05B9719C728DF00E5827D /* DeferredWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeferredWriter.swift; sourceTree = "<group>"; };
 		52C05B9819C728DF00E5827D /* ReadOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOperations.swift; sourceTree = "<group>"; };
 		52C05B9919C728DF00E5827D /* WriteOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteOperations.swift; sourceTree = "<group>"; };
-		52C05BA519C72B7100E5827D /* Deferred.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Deferred.xcodeproj; path = ../Deferred/Deferred.xcodeproj; sourceTree = "<group>"; };
-		52C05BB419C72B7400E5827D /* Result.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Result.xcodeproj; path = ../Result/Result.xcodeproj; sourceTree = "<group>"; };
 		69356D5419E587AB009F3238 /* TCPCommSocketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPCommSocketTests.swift; sourceTree = "<group>"; };
 		69356D5C19E587D2009F3238 /* TCPAcceptSocketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPAcceptSocketTests.swift; sourceTree = "<group>"; };
+		A80C046C1C450CE00098B4DC /* Deferred.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Deferred.framework; path = Carthage/Build/Mac/Deferred.framework; sourceTree = "<group>"; };
+		A80C046E1C450CF40098B4DC /* Swiftz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swiftz.framework; path = Carthage/Build/Mac/Swiftz.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,8 +87,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52C05C4219C7395F00E5827D /* Deferred.framework in Frameworks */,
-				52C05C4319C7395F00E5827D /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,8 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69356D6719E597FB009F3238 /* ResultMac.framework in Frameworks */,
-				69356D6319E597F5009F3238 /* DeferredMac.framework in Frameworks */,
+				A80C04731C4525BF0098B4DC /* Swiftz.framework in Frameworks */,
+				A80C04741C4525C40098B4DC /* Deferred.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +112,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				52B9AFE719C36ABA0039E5D7 /* DeferredTCPSocketMac.framework in Frameworks */,
+				A80C04751C45263C0098B4DC /* Swiftz.framework in Frameworks */,
+				A80C04761C4526420098B4DC /* Deferred.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,13 +123,13 @@
 		52B9AF9719C36A2B0039E5D7 = {
 			isa = PBXGroup;
 			children = (
+				A80C046E1C450CF40098B4DC /* Swiftz.framework */,
+				A80C046C1C450CE00098B4DC /* Deferred.framework */,
 				52B9AFA319C36A2B0039E5D7 /* DeferredTCPSocket */,
 				52B9AFB019C36A2B0039E5D7 /* DeferredTCPSocketTests */,
 				52B9AFDD19C36ABA0039E5D7 /* DeferredTCPSocketMac */,
 				52B9AFEA19C36ABA0039E5D7 /* DeferredTCPSocketMacTests */,
 				52B9AFA219C36A2B0039E5D7 /* Products */,
-				52C05BA519C72B7100E5827D /* Deferred.xcodeproj */,
-				52C05BB419C72B7400E5827D /* Result.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -300,28 +230,6 @@
 			name = DeferredIO;
 			sourceTree = "<group>";
 		};
-		52C05BA619C72B7100E5827D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				52C05BAD19C72B7100E5827D /* Deferred.framework */,
-				52C05BAF19C72B7100E5827D /* DeferredTests.xctest */,
-				52C05BB119C72B7100E5827D /* DeferredMac.framework */,
-				52C05BB319C72B7100E5827D /* DeferredMacTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		52C05BB519C72B7400E5827D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				52C05BBC19C72B7400E5827D /* Result.framework */,
-				52C05BBE19C72B7400E5827D /* ResultTests.xctest */,
-				52C05BC019C72B7400E5827D /* ResultMac.framework */,
-				52C05BC219C72B7400E5827D /* ResultMacTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -354,6 +262,7 @@
 				52B9AF9D19C36A2B0039E5D7 /* Frameworks */,
 				52B9AF9E19C36A2B0039E5D7 /* Headers */,
 				52B9AF9F19C36A2B0039E5D7 /* Resources */,
+				A80C046B1C44353F0098B4DC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -390,12 +299,11 @@
 				52B9AFD819C36ABA0039E5D7 /* Frameworks */,
 				52B9AFD919C36ABA0039E5D7 /* Headers */,
 				52B9AFDA19C36ABA0039E5D7 /* Resources */,
+				A80C04721C45254C0098B4DC /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				691066FB19CA68AC00B6A335 /* PBXTargetDependency */,
-				691066FD19CA68AC00B6A335 /* PBXTargetDependency */,
 			);
 			name = DeferredTCPSocketMac;
 			productName = DeferredTCPSocketMac;
@@ -409,6 +317,7 @@
 				52B9AFE219C36ABA0039E5D7 /* Sources */,
 				52B9AFE319C36ABA0039E5D7 /* Frameworks */,
 				52B9AFE419C36ABA0039E5D7 /* Resources */,
+				A80C04771C452B740098B4DC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -426,7 +335,9 @@
 		52B9AF9819C36A2B0039E5D7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Big Nerd Ranch";
 				TargetAttributes = {
 					52B9AFA019C36A2B0039E5D7 = {
@@ -453,16 +364,6 @@
 			mainGroup = 52B9AF9719C36A2B0039E5D7;
 			productRefGroup = 52B9AFA219C36A2B0039E5D7 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 52C05BA619C72B7100E5827D /* Products */;
-					ProjectRef = 52C05BA519C72B7100E5827D /* Deferred.xcodeproj */;
-				},
-				{
-					ProductGroup = 52C05BB519C72B7400E5827D /* Products */;
-					ProjectRef = 52C05BB419C72B7400E5827D /* Result.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				52B9AFA019C36A2B0039E5D7 /* DeferredTCPSocket */,
@@ -472,65 +373,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		52C05BAD19C72B7100E5827D /* Deferred.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Deferred.framework;
-			remoteRef = 52C05BAC19C72B7100E5827D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		52C05BAF19C72B7100E5827D /* DeferredTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = DeferredTests.xctest;
-			remoteRef = 52C05BAE19C72B7100E5827D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		52C05BB119C72B7100E5827D /* DeferredMac.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = DeferredMac.framework;
-			remoteRef = 52C05BB019C72B7100E5827D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		52C05BB319C72B7100E5827D /* DeferredMacTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = DeferredMacTests.xctest;
-			remoteRef = 52C05BB219C72B7100E5827D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		52C05BBC19C72B7400E5827D /* Result.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Result.framework;
-			remoteRef = 52C05BBB19C72B7400E5827D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		52C05BBE19C72B7400E5827D /* ResultTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ResultTests.xctest;
-			remoteRef = 52C05BBD19C72B7400E5827D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		52C05BC019C72B7400E5827D /* ResultMac.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ResultMac.framework;
-			remoteRef = 52C05BBF19C72B7400E5827D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		52C05BC219C72B7400E5827D /* ResultMacTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ResultMacTests.xctest;
-			remoteRef = 52C05BC119C72B7400E5827D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		52B9AF9F19C36A2B0039E5D7 /* Resources */ = {
@@ -562,6 +404,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A80C046B1C44353F0098B4DC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Deferred.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Swiftz.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "";
+		};
+		A80C04721C45254C0098B4DC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/Swiftz.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/Deferred.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "";
+		};
+		A80C04771C452B740098B4DC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/Swiftz.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/Deferred.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		52B9AF9C19C36A2B0039E5D7 /* Sources */ = {
@@ -624,16 +514,6 @@
 			target = 52B9AFDB19C36ABA0039E5D7 /* DeferredTCPSocketMac */;
 			targetProxy = 52B9AFE819C36ABA0039E5D7 /* PBXContainerItemProxy */;
 		};
-		691066FB19CA68AC00B6A335 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DeferredMac;
-			targetProxy = 691066FA19CA68AC00B6A335 /* PBXContainerItemProxy */;
-		};
-		691066FD19CA68AC00B6A335 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ResultMac;
-			targetProxy = 691066FC19CA68AC00B6A335 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -658,6 +538,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -730,12 +611,18 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DeferredTCPSocket/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bignerdranch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -747,11 +634,17 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DeferredTCPSocket/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bignerdranch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -768,6 +661,7 @@
 				);
 				INFOPLIST_FILE = DeferredTCPSocketTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bignerdranch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -781,6 +675,7 @@
 				);
 				INFOPLIST_FILE = DeferredTCPSocketTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bignerdranch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -793,6 +688,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -801,7 +701,8 @@
 				INFOPLIST_FILE = DeferredTCPSocketMac/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bignerdranch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -817,11 +718,17 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = DeferredTCPSocketMac/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bignerdranch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -832,9 +739,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -842,7 +751,8 @@
 				);
 				INFOPLIST_FILE = DeferredTCPSocketMacTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bignerdranch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -853,13 +763,16 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = DeferredTCPSocketMacTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bignerdranch.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};

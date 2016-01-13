@@ -8,9 +8,9 @@
 
 import Foundation
 #if os(iOS)
-import Result
+import Swiftz
 #else
-import ResultMac
+import Swiftz
 #endif
 
 private func socklen_of<T>(x: T) -> socklen_t {
@@ -29,21 +29,21 @@ public struct LibCError: ErrorType {
 public final class TCPAcceptSocket {
     public typealias ConnectionHandler = (queue: dispatch_queue_t, callback: (TCPCommSocket) -> ())
 
-    public class func accept(var onPort port: UInt16, withConnectionHandler: ConnectionHandler) -> Result<TCPAcceptSocket> {
+    public class func accept(var onPort port: UInt16, withConnectionHandler: ConnectionHandler) -> Either<ErrorType, TCPAcceptSocket> {
         let fd = socket(AF_INET, SOCK_STREAM, 0)
         if fd < 0 {
-            return Result(failure: LibCError(functionName: "socket", errno: errno))
+            return .Left(LibCError(functionName: "socket", errno: errno))
         }
 
         var addr: UnsafeMutablePointer<addrinfo> = nil
-        let cleanupWithError: String -> Result<TCPAcceptSocket> = { functionName in
+        let cleanupWithError: String -> Either<ErrorType, TCPAcceptSocket> = { functionName in
             let e = errno
             Darwin.close(fd)
 
             if addr != nil {
                 freeaddrinfo(addr)
             }
-            return Result(failure: LibCError(functionName: functionName, errno: e))
+            return .Left(LibCError(functionName: functionName, errno: e))
         }
 
         var reuseAddr = 1
@@ -94,7 +94,7 @@ public final class TCPAcceptSocket {
 
         freeaddrinfo(addr)
         let sock = TCPAcceptSocket(fd: fd, port: port, withConnectionHandler: withConnectionHandler)
-        return Result(success: sock)
+        return .Right(sock)
     }
 
     private let source: dispatch_source_t
@@ -137,7 +137,7 @@ public final class TCPAcceptSocket {
         var addr: sockaddr = sockaddr(sa_len: 0, sa_family: 0, sa_data: (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
         var len: socklen_t = 0
 
-        for i in 0 ..< numAwaiting {
+        for _ in 0 ..< numAwaiting {
             let fd = accept(listening_fd, &addr, &len)
             if fd < 0 {
                 NSLog("accept() failed: \(errno)")
@@ -145,6 +145,8 @@ public final class TCPAcceptSocket {
             }
 
             NSLog("accepted fd \(fd)")
+            //var flags:Int32 = 1
+            // setsockopt(fd, SOL_SOCKET, SO_NOSIGPIPE, &flags, socklen_t(sizeof(Int32)))
             let callback = connHandler.callback
             dispatch_async(connHandler.queue) { callback(TCPCommSocket(fd: fd)) }
         }

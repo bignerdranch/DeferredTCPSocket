@@ -59,7 +59,7 @@ class DeferredIOOperation: NSOperation {
     }
 
     func suspendSources() {
-        if let timeout = timeout {
+        if let _ = timeout {
             dispatch_suspend(timerSource)
         }
 
